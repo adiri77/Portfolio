@@ -31,6 +31,13 @@
         img {
             max-width: 100%;
             height: auto;
+            display: block;
+        }
+
+        /* Prevent horizontal scroll */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
         }
 
         /* Animated Background */
@@ -172,11 +179,11 @@
             display: flex;
             list-style: none;
             gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.7);
             padding: 0.5rem;
             border-radius: 50px;
             backdrop-filter: blur(15px);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
         }
 
@@ -186,7 +193,7 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #475569;
+            color: #1e293b;
             font-weight: 600;
             padding: 0.8rem 1.5rem;
             border-radius: 25px;
@@ -236,15 +243,15 @@
         }
 
         .nav-links a.active {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1));
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(124, 58, 237, 0.15));
             color: #1e293b;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
             backdrop-filter: blur(10px);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            font-weight: 700;
         }
 
         nav.scrolled .nav-links a {
-            color: #475569;
+            color: #1e293b;
         }
 
         nav.scrolled .nav-links a:hover {
@@ -660,6 +667,8 @@
             color: #1e293b;
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .project-header h3 i {
@@ -675,6 +684,7 @@
             font-size: 0.9rem;
             word-wrap: break-word;
             overflow-wrap: break-word;
+            hyphens: auto;
         }
 
         .project-body {
@@ -771,18 +781,19 @@
         /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
-            background: rgba(255, 255, 255, 0.8);
-            border: 2px solid rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(37, 99, 235, 0.2);
             border-radius: 12px;
             padding: 0.8rem;
             font-size: 1.2rem;
-            color: #475569;
+            color: #2563eb;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(15px);
             position: relative;
-            overflow: hidden;
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            overflow: visible;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
         }
 
         .mobile-menu-btn::before {
@@ -804,13 +815,16 @@
 
         .mobile-menu-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-            color: white;
-            border-color: transparent;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+            color: #1d4ed8;
+            border-color: rgba(37, 99, 235, 0.4);
+            background: rgba(255, 255, 255, 1);
         }
 
         .mobile-menu-btn i {
             transition: transform 0.3s ease;
+            display: block;
+            color: inherit;
         }
 
         .mobile-menu-btn:hover i {
@@ -818,13 +832,16 @@
         }
 
         nav.scrolled .mobile-menu-btn {
-            color: rgba(255, 255, 255, 0.9);
-            background: rgba(255, 255, 255, 0.9);
-            border-color: rgba(0, 0, 0, 0.1);
+            color: #2563eb;
+            background: rgba(255, 255, 255, 0.95);
+            border-color: rgba(37, 99, 235, 0.3);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
         }
 
         nav.scrolled .mobile-menu-btn:hover {
-            color: white;
+            color: #1d4ed8;
+            background: rgba(255, 255, 255, 1);
+            border-color: rgba(37, 99, 235, 0.5);
         }
 
         .nav-links.mobile-open {
@@ -833,15 +850,15 @@
             top: 100%;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(25px);
             flex-direction: column;
             padding: 1.5rem 0;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             border-radius: 0 0 20px 20px;
             animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         @keyframes slideDown {
@@ -857,28 +874,30 @@
         }
 
         .nav-links.mobile-open a {
-            color: rgba(255, 255, 255, 0.9);
+            color: #1e293b;
             margin: 0 1rem;
             padding: 1rem 1.5rem;
             border-radius: 15px;
             background: transparent;
             transition: all 0.3s ease;
             border: 1px solid transparent;
+            font-weight: 600;
         }
 
         .nav-links.mobile-open a:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(37, 99, 235, 0.1);
             transform: translateX(10px);
-            color: white;
-            border-color: rgba(255, 255, 255, 0.2);
+            color: #2563eb;
+            border-color: rgba(37, 99, 235, 0.2);
             backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .nav-links.mobile-open a.active {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1));
-            color: white;
-            border-color: rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(124, 58, 237, 0.15));
+            color: #1e293b;
+            border-color: rgba(37, 99, 235, 0.3);
+            font-weight: 700;
         }
 
         /* Responsive Design */
@@ -944,11 +963,27 @@
             .contact-links {
                 gap: 1.5rem;
             }
+
+            .project-header h3 {
+                font-size: 1.25rem;
+            }
+
+            .project-tech {
+                font-size: 0.88rem;
+            }
         }
 
         @media (max-width: 768px) {
             .mobile-menu-btn {
                 display: block;
+                color: #2563eb;
+                background: rgba(255, 255, 255, 0.95);
+                border: 2px solid rgba(37, 99, 235, 0.3);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            }
+
+            .mobile-menu-btn i {
+                color: #2563eb;
             }
 
             .nav-links {
@@ -957,6 +992,10 @@
 
             .nav-container {
                 padding: 0 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
             }
 
             .hero {
@@ -1024,6 +1063,32 @@
                 border-radius: 15px;
             }
 
+            .project-header h3 {
+                font-size: 1.2rem;
+            }
+
+            .project-tech {
+                font-size: 0.85rem;
+                word-break: break-word;
+            }
+
+            .project-body h4 {
+                font-size: 1rem;
+            }
+
+            .project-body h5 {
+                font-size: 0.95rem;
+            }
+
+            .project-body ul {
+                margin-left: 1rem;
+            }
+
+            .project-body li {
+                font-size: 0.95rem;
+                margin-bottom: 0.6rem;
+            }
+
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -1060,15 +1125,6 @@
                 justify-content: center;
                 width: 100%;
             }
-
-            .project-body ul {
-                margin-left: 1rem;
-            }
-
-            .project-body li {
-                font-size: 0.95rem;
-                margin-bottom: 0.6rem;
-            }
         }
 
         @media (max-width: 480px) {
@@ -1089,7 +1145,21 @@
             }
 
             .nav-container {
-                padding: 0 1rem;
+                padding: 0 0.75rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .mobile-menu-btn {
+                padding: 0.7rem;
+                font-size: 1.1rem;
+                color: #2563eb;
+            }
+
+            .mobile-menu-btn i {
+                color: #2563eb;
             }
 
             .about-content {
@@ -1105,6 +1175,14 @@
                 padding: 1rem;
             }
 
+            .skill-category h3 {
+                font-size: 1.1rem;
+            }
+
+            .skill-category p {
+                font-size: 0.9rem;
+            }
+
             .skill-category i {
                 font-size: 2.5rem;
             }
@@ -1113,8 +1191,28 @@
                 padding: 1rem;
             }
 
+            .project-header h3 {
+                font-size: 1.1rem;
+            }
+
+            .project-tech {
+                font-size: 0.8rem;
+            }
+
             .project-body {
                 padding: 1rem;
+            }
+
+            .project-body h4 {
+                font-size: 0.95rem;
+            }
+
+            .project-body h5 {
+                font-size: 0.9rem;
+            }
+
+            .project-body li {
+                font-size: 0.9rem;
             }
 
             .contact-content {
@@ -1122,13 +1220,18 @@
             }
 
             .contact-link {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
 
             .btn {
                 padding: 10px 20px;
                 font-size: 0.9rem;
                 width: 180px;
+            }
+
+            .project-btn {
+                font-size: 0.85rem;
+                padding: 8px 16px;
             }
         }
 
@@ -1145,26 +1248,84 @@
                 font-size: 1.6rem;
             }
 
+            .nav-container {
+                padding: 0 0.5rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .mobile-menu-btn {
+                padding: 0.6rem;
+                font-size: 1rem;
+                color: #2563eb;
+                border-width: 2px;
+            }
+
+            .mobile-menu-btn i {
+                color: #2563eb;
+                font-size: 1rem;
+            }
+
             .profile-img {
                 width: 130px;
                 height: 130px;
             }
 
             .skill-category {
-                padding: 1rem;
+                padding: 0.9rem;
+            }
+
+            .skill-category h3 {
+                font-size: 1rem;
+            }
+
+            .skill-category p {
+                font-size: 0.85rem;
             }
 
             .skill-category i {
                 font-size: 2rem;
             }
 
+            .project-header {
+                padding: 0.9rem;
+            }
+
             .project-header h3 {
                 font-size: 1rem;
+            }
+
+            .project-tech {
+                font-size: 0.75rem;
+            }
+
+            .project-body {
+                padding: 0.9rem;
+            }
+
+            .project-body h4 {
+                font-size: 0.9rem;
+            }
+
+            .project-body h5 {
+                font-size: 0.85rem;
+            }
+
+            .project-body li {
+                font-size: 0.85rem;
             }
 
             .btn {
                 max-width: 180px;
                 padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+
+            .project-btn {
+                font-size: 0.8rem;
+                padding: 6px 12px;
             }
         }
 
@@ -1185,6 +1346,14 @@
                 font-size: 1.5rem;
             }
 
+            .nav-container {
+                padding: 0 0.5rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
             .profile-img {
                 width: 120px;
                 height: 120px;
@@ -1194,8 +1363,24 @@
                 padding: 1rem;
             }
 
+            .about-text h3 {
+                font-size: 1.3rem;
+            }
+
+            .about-text p {
+                font-size: 0.9rem;
+            }
+
             .skill-category {
                 padding: 0.8rem;
+            }
+
+            .skill-category h3 {
+                font-size: 0.95rem;
+            }
+
+            .skill-category p {
+                font-size: 0.8rem;
             }
 
             .skill-category i {
@@ -1203,15 +1388,47 @@
                 padding: 0.5rem;
             }
 
+            .project-header {
+                padding: 0.8rem;
+            }
+
+            .project-header h3 {
+                font-size: 0.95rem;
+            }
+
+            .project-tech {
+                font-size: 0.7rem;
+            }
+
+            .project-body {
+                padding: 0.8rem;
+            }
+
+            .project-body h4 {
+                font-size: 0.85rem;
+            }
+
+            .project-body h5 {
+                font-size: 0.8rem;
+            }
+
+            .project-body li {
+                font-size: 0.8rem;
+            }
+
             .btn {
                 max-width: 160px;
                 padding: 8px 16px;
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
 
             .project-btn {
-                font-size: 0.8rem;
+                font-size: 0.75rem;
                 padding: 6px 12px;
+            }
+
+            .contact-link {
+                font-size: 0.9rem;
             }
         }
 
@@ -1253,6 +1470,50 @@
 
             .project-card:hover {
                 transform: none;
+            }
+
+            .mobile-menu-btn {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+
+        /* Improve text readability on small screens */
+        @media (max-width: 768px) {
+            body {
+                -webkit-text-size-adjust: 100%;
+                -moz-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+                text-size-adjust: 100%;
+            }
+
+            .project-body ul,
+            .project-body ol {
+                padding-left: 1.2rem;
+            }
+
+            .project-body li {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+        }
+
+        /* Tablet optimizations */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.15rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             }
         }
 
@@ -1353,7 +1614,7 @@
                 Aditya Singh
             </h1>
             <p class="subtitle">
-                Software Developer | Blockchain & AI Enthusiast | Full Stack Engineer
+                Software Developer | Full-Stack Development | Blockchain & AI Enthusiast
             </p>
             <div class="cta-buttons">
                 <a class="btn btn-primary" href="#projects">
@@ -1382,7 +1643,7 @@
                     Hello! I'm Aditya Singh
                 </h3>
                 <p>
-                    Passionate Software Developer with strong expertise in Blockchain, AI, and Full Stack Development.
+                    Passionate Software Developer with strong expertise in Full-Stack Development, specializing in Software Development. 
                     Currently working as a Software Developer at Rapid Innovation, building scalable blockchain payment
                     ecosystems and AI-driven platforms.
                 </p>
@@ -1461,6 +1722,21 @@
                         </h4>
                         <div style="margin-left: 1rem;">
                             <h5 style="font-style: italic; margin-bottom: 0.5rem; margin-top: 1rem;">
+                                RUH.ai
+                            </h5>
+                            <ul style="margin-left: 1.5rem; margin-bottom: 1rem; line-height: 1.8;">
+                                <li style="margin-bottom: 0.5rem;">
+                                    Built high-performance marketing website using Next.js with Strapi CMS and Zustand
+                                    for state management
+                                </li>
+                                <li style="margin-bottom: 0.5rem;">
+                                    Developed visual workflow builder using React Flow for agent orchestration
+                                </li>
+                                <li style="margin-bottom: 0.5rem;">
+                                    Contributed to SDR AI agent system using LangChain, Python, and gRPC
+                                </li>
+                            </ul>
+                            <h5 style="font-style: italic; margin-bottom: 0.5rem; margin-top: 1rem;">
                                 Blockchain Payment Ecosystem
                             </h5>
                             <ul style="margin-left: 1.5rem; margin-bottom: 1rem; line-height: 1.8;">
@@ -1489,21 +1765,6 @@
                                     Designed APIs and UI flows for secure, scalable organization-wide usage
                                 </li>
                             </ul>
-                            <h5 style="font-style: italic; margin-bottom: 0.5rem; margin-top: 1rem;">
-                                RUH.ai
-                            </h5>
-                            <ul style="margin-left: 1.5rem; line-height: 1.8;">
-                                <li style="margin-bottom: 0.5rem;">
-                                    Built high-performance marketing website using Next.js with Strapi CMS and Zustand
-                                    for state management
-                                </li>
-                                <li style="margin-bottom: 0.5rem;">
-                                    Developed visual workflow builder using React Flow for agent orchestration
-                                </li>
-                                <li style="margin-bottom: 0.5rem;">
-                                    Contributed to SDR AI agent system using LangChain, Python, and gRPC
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -1515,6 +1776,17 @@
             Technical Skills
         </h2>
         <div class="skills-grid">
+            <div class="skill-category">
+                <i class="fas fa-laptop-code">
+                </i>
+                <h3>
+                    Software Development
+                </h3>
+                <p>
+                    Full-Stack Development expertise in <strong>Next.js</strong>, <strong>ReactJS</strong>, <strong>Node.js</strong>, 
+                    <strong>Express.js</strong>, <strong>MongoDB</strong>, and <strong>SQL</strong>
+                </p>
+            </div>
             <div class="skill-category">
                 <i class="fas fa-code">
                 </i>
@@ -1606,6 +1878,38 @@
             PROJECTS
         </h2>
         <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>
+                        RUH AI
+                    </h3>
+                    <p class="project-tech">
+                        Next.js, React Flow, LangChain, Python, gRPC, Strapi CMS, Zustand
+                    </p>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        <ul style="margin-left: 1.5rem; margin-bottom: 1rem; line-height: 1.8;">
+                            <li>
+                                Built a high-performance <strong>marketing website</strong> using <strong>Next.js</strong> with <strong>Strapi CMS</strong> and managed global theming and UI state using <strong>Zustand</strong>
+                            </li>
+                            <li>
+                                Developed a <strong>visual workflow builder</strong> similar to <strong>n8n and LangFlow</strong> using <strong>React Flow</strong>, implementing <strong>agent and MCP-based workflow orchestration</strong> with an intuitive, scalable UI
+                            </li>
+                            <li>
+                                Contributed to building an <strong>SDR AI agent system</strong>, working on <strong>agent orchestration and streaming responses</strong> using <strong>LangChain, Python, and gRPC</strong>
+                            </li>
+                            <li>
+                                Handled real-time data flow and frontend integration for AI-driven workflows
+                            </li>
+                            <li>
+                                Researched and implemented <strong>Stripe payment integration</strong> across the RUH platform, ensuring secure and seamless payment flows
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
             <div class="project-card">
                 <div class="project-header">
                     <h3>
