@@ -1017,21 +1017,32 @@ line-height: 1.7;
 
 .skills-grid {
 grid-template-columns: 1fr;
-gap: 1rem;
+gap: 1.25rem;
 }
 
 .skill-category {
-padding: 1.5rem;
+padding: 1.25rem;
+}
+
+.skill-category h3 {
+margin-bottom: 0.625rem;
 }
 
 .skill-category i {
+margin-bottom: 0.75rem;
+padding: 0.75rem;
 font-size: 3rem;
-padding: 0.8rem;
+}
+
+.projects-grid,
+.grid-info,
+.grid-education,
+.grid-certifications {
+gap: 1.25rem;
 }
 
 .projects-grid {
 grid-template-columns: 1fr;
-gap: 1.5rem;
 }
 
 .project-card {
@@ -1267,7 +1278,7 @@ display: flex;
 flex-wrap: wrap;
 gap: 0.5rem;
 justify-content: center;
-margin-top: 1rem;
+margin-top: 0;
 }
 
 .skill-badge {
@@ -1960,11 +1971,11 @@ padding: 1.5rem;
 
 /* Layout utilities */
 .subsection-heading {
-margin-bottom: 1.5rem;
+margin-bottom: 1.25rem;
 font-size: 1.5rem;
 border-left: 4px solid var(--aqua);
 padding-left: 12px;
-margin-top: 1rem;
+margin-top: 1.25rem;
 }
 
 .grid-education {

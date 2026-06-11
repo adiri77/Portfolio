@@ -7,7 +7,7 @@ export default function Skills() {
   return (
     <FadeInSection id="skills">
       <SectionTitle>Technical Skills</SectionTitle>
-      <MotionGrid className="skills-grid grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 xl:grid-cols-3">
+      <MotionGrid className="skills-grid grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
         {skillCategories.map((category) => (
           <MotionGridItem key={category.title}>
             <div className="skill-category h-full">
