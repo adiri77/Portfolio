@@ -3,6 +3,59 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AVATAR_TOPICS, type AvatarTopic } from "@/config/avatar";
 
+const MALE_VOICE_HINTS = [
+  "male",
+  "david",
+  "mark",
+  "guy",
+  "daniel",
+  "james",
+  "ryan",
+  "george",
+  "thomas",
+  "aaron",
+  "fred",
+  "richard",
+  "paul",
+];
+
+const FEMALE_VOICE_HINTS = [
+  "female",
+  "samantha",
+  "zira",
+  "susan",
+  "hazel",
+  "catherine",
+  "karen",
+  "linda",
+  "heather",
+  "victoria",
+  "jenny",
+  "aria",
+  "sara",
+  "natasha",
+];
+
+function pickMaleVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | undefined {
+  const englishVoices = voices.filter((voice) => voice.lang.toLowerCase().startsWith("en"));
+
+  const maleVoice = englishVoices.find((voice) => {
+    const name = voice.name.toLowerCase();
+    const isFemale = FEMALE_VOICE_HINTS.some((hint) => name.includes(hint));
+    if (isFemale) return false;
+    return MALE_VOICE_HINTS.some((hint) => name.includes(hint));
+  });
+
+  if (maleVoice) return maleVoice;
+
+  const nonFemaleVoice = englishVoices.find((voice) => {
+    const name = voice.name.toLowerCase();
+    return !FEMALE_VOICE_HINTS.some((hint) => name.includes(hint));
+  });
+
+  return nonFemaleVoice ?? englishVoices[0];
+}
+
 export function useAvatarSpeech() {
   const [currentTopic, setCurrentTopic] = useState<AvatarTopic>("intro");
   const [speechText, setSpeechText] = useState(
@@ -11,6 +64,7 @@ export function useAvatarSpeech() {
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   const typewriterTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const maleVoiceRef = useRef<SpeechSynthesisVoice | null>(null);
 
   const typewriteText = useCallback((text: string) => {
     if (typewriterTimerRef.current) clearInterval(typewriterTimerRef.current);
@@ -51,29 +105,52 @@ export function useAvatarSpeech() {
         return;
       }
 
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 0.94;
-      utterance.pitch = 1;
+      const speakWithMaleVoice = () => {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 0.94;
+        utterance.pitch = 0.9;
+
+        const voices = window.speechSynthesis.getVoices();
+        const maleVoice = maleVoiceRef.current ?? pickMaleVoice(voices);
+        if (maleVoice) {
+          maleVoiceRef.current = maleVoice;
+          utterance.voice = maleVoice;
+        }
+
+        utterance.onstart = () => setIsSpeaking(true);
+        utterance.onend = () => setIsSpeaking(false);
+        utterance.onerror = () => setIsSpeaking(false);
+
+        window.speechSynthesis.speak(utterance);
+      };
 
       const voices = window.speechSynthesis.getVoices();
-      const preferred =
-        voices.find((v) => v.lang.startsWith("en") && (v.name.includes("Male") || v.name.includes("David") || v.name.includes("Google"))) ||
-        voices.find((v) => v.lang.startsWith("en"));
-      if (preferred) utterance.voice = preferred;
+      if (voices.length === 0) {
+        const onVoicesReady = () => {
+          maleVoiceRef.current = pickMaleVoice(window.speechSynthesis.getVoices()) ?? null;
+          window.speechSynthesis.removeEventListener("voiceschanged", onVoicesReady);
+          speakWithMaleVoice();
+        };
+        window.speechSynthesis.addEventListener("voiceschanged", onVoicesReady);
+        return;
+      }
 
-      utterance.onstart = () => setIsSpeaking(true);
-      utterance.onend = () => setIsSpeaking(false);
-      utterance.onerror = () => setIsSpeaking(false);
-
-      window.speechSynthesis.speak(utterance);
+      maleVoiceRef.current = pickMaleVoice(voices) ?? null;
+      speakWithMaleVoice();
     },
     [stopSpeech, typewriteText]
   );
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.speechSynthesis) {
-      window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
-    }
+    if (typeof window === "undefined" || !window.speechSynthesis) return;
+
+    const cacheMaleVoice = () => {
+      maleVoiceRef.current = pickMaleVoice(window.speechSynthesis.getVoices()) ?? null;
+    };
+
+    cacheMaleVoice();
+    window.speechSynthesis.addEventListener("voiceschanged", cacheMaleVoice);
+    return () => window.speechSynthesis.removeEventListener("voiceschanged", cacheMaleVoice);
   }, []);
 
   useEffect(() => () => stopSpeech(), [stopSpeech]);
