@@ -12,9 +12,9 @@ export const navLinks = [
 ] as const;
 
 export const aboutParagraphs = [
-  "I am a Software Development Engineer with experience building AI-powered applications, agentic workflow systems, LLM integrations, orchestration platforms, and scalable backend services. I have hands-on experience with Prompt Engineering, LangChain, RAG pipelines, workflow orchestration, vector database integrations, REST APIs, distributed systems, and microservices architecture using Python, FastAPI, Node.js, Redis, Kafka, React.js, and Next.js.",
-  "Currently at Rapid Innovation (Product: Ruh AI), I designed and developed a Workflow Orchestrator platform for autonomous AI agents — implementing multi-step LLM orchestration pipelines with OpenClaw and Hermes, automated sandbox deployment infrastructure, and real-time observability using Grafana and SigNoz. I also architected distributed agent infrastructure with event-driven execution, SQL-backed authentication microservices, and fault-tolerant systems handling high-throughput workloads.",
-  "I bring a strong foundation in core computer science — data structures and algorithms, object-oriented design, system design, database optimization, and complexity analysis — and I am passionate about solving ambiguous engineering problems and delivering scalable, maintainable solutions in fast-paced Agile product environments.",
+  "Software Development Engineer focused on agentic AI systems, distributed backend architecture, and production-grade LLM orchestration. I design and ship event-driven microservices, multi-step inference pipelines, and REST/JSON service layers using Python, FastAPI, Node.js, Redis, Kafka, React.js, and Next.js.",
+  "At Rapid Innovation (Ruh AI), I engineered a Workflow Orchestrator for autonomous agents — multi-step LLM pipelines with OpenClaw/Hermes runtimes, Kafka/Redis event buses, SQL-backed auth microservices, automated sandbox deployment, and Grafana/SigNoz observability for latency and system health at scale.",
+  "Grounded in core CS — data structures, algorithms, OOP/SOLID, low-level design, system design, and query optimization — I build fault-tolerant, high-throughput systems and operate effectively in ambiguous, fast-paced Agile product environments.",
 ];
 
 export const education = [
@@ -24,7 +24,7 @@ export const education = [
     school: "ABES Institute of Technology, Ghaziabad, India",
     detail: "2020 – 2024 | Percentage: 75.4%",
     extra:
-      "Relevant Coursework: Data Structures & Algorithms, Object-Oriented Design, Low-Level Design (LLD), System Design, Database Systems, Operating Systems, Networking, Concurrency, Complexity Analysis (Big-O)",
+      "Coursework: Data Structures & Algorithms, Object-Oriented Design, Low-Level Design (LLD), System Design, Database Systems, Operating Systems, Networking, Concurrency, Complexity Analysis (Big-O)",
   },
   {
     title: "Senior Secondary (XII)",
@@ -48,13 +48,13 @@ export const certifications: Certification[] = [
     title: "Intensive Java Programming Certification",
     subtitle: "ABESIT • 2023",
     description:
-      "Completed an intensive Java programming course validating proficiency in object-oriented architecture, algorithms, and modular design principles.",
+      "Validated proficiency in object-oriented architecture, algorithmic problem-solving, and modular Java design patterns.",
   },
   {
     title: "Smart India Hackathon 2022 — Ranker",
     subtitle: "Ministry of Education, Govt. of India • 2022",
     description:
-      "Distinguished ranker for the Centralised Grievance System Portal — a platform enabling AKTU institutions to raise technical and management issues directly to AICTE.",
+      "Ranked for the Centralised Grievance System Portal — a role-based grievance routing platform connecting AKTU institutions to AICTE.",
     links: [
       [
         {
@@ -73,16 +73,16 @@ export const experiences = [
     company: "Rapid Innovation (Product: Ruh AI)",
     period: "May 2025 – Present | Remote, India",
     bullets: [
-      "Working on an Agentic Workforce Platform enabling users to create and deploy end-to-end AI agents with automated sandbox deployment and runtime setup.",
-      "Designed and developed a Workflow Orchestrator platform for building AI-driven workflows and autonomous agents with multi-step LLM orchestration pipelines.",
-      "Architected scalable agent orchestration using Python, FastAPI, Node.js, LangChain, Redis, and Kafka for real-time event-driven execution.",
-      "Integrated OpenClaw and Hermes agent systems, allowing users to deploy agents powered by either framework based on workflow selection.",
-      "Built REST-based microservices and SQL-backed services for authentication, lifecycle management, and secure HTTP/JSON communication.",
-      "Integrated support for OpenAI, Codex, Claude Code, and external LLM API keys for deployed AI agents.",
-      "Worked on prompt engineering, workflow optimization, latency reduction, and scalable AI execution with caching and efficient algorithms.",
-      "Enhanced system observability using Grafana and SigNoz for real-time monitoring, logging, and system health tracking.",
-      "Designed fault-tolerant distributed computing systems handling high-throughput workloads; applied OOP and SOLID principles for maintainable code.",
-      "Collaborated in Agile teams using React.js and Next.js for platform frontend development.",
+      "Engineer core services on an Agentic Workforce Platform — end-to-end AI agent creation, sandboxed runtime provisioning, and automated deployment pipelines.",
+      "Designed and implemented a Workflow Orchestrator for multi-step LLM pipelines with user-defined DAG-style agent task flows.",
+      "Architected event-driven agent execution using Python, FastAPI, Node.js, LangChain, Redis, and Kafka for low-latency, fault-tolerant orchestration.",
+      "Integrated OpenClaw and Hermes agent runtimes with pluggable backend selection per workflow configuration.",
+      "Built REST microservices and SQL-backed auth/lifecycle services with secure HTTP/JSON inter-service communication.",
+      "Wired OpenAI, Codex, Claude Code, and external LLM API key management for production agent deployments.",
+      "Optimized inference latency via prompt engineering, Redis caching, and algorithmic hot-path improvements.",
+      "Instrumented Grafana and SigNoz dashboards for distributed tracing, logging, and real-time system health monitoring.",
+      "Applied OOP/SOLID and fault-tolerance patterns for high-throughput distributed workloads.",
+      "Contributed React.js/Next.js frontend modules for orchestration UI and platform administration.",
     ],
   },
   {
@@ -90,11 +90,11 @@ export const experiences = [
     company: "Rapid Innovation",
     period: "July 2024 – May 2025 | Noida, India",
     bullets: [
-      "Developed scalable frontend applications using React.js and Next.js with clean-code standards and reusable component architecture.",
-      "Implemented secure Stripe payment workflows and multi-role admin dashboards for production web applications.",
-      "Integrated REST APIs and backend services for scalable multi-tier web applications.",
-      "Participated in Agile SDLC — sprint planning, code reviews, and cross-functional collaboration on system design.",
-      "Collaborated on multi-tier architecture ensuring efficient data flow, platform scalability, and reliability.",
+      "Shipped production React.js/Next.js SPAs with reusable component libraries and clean separation of concerns.",
+      "Implemented Stripe payment integration and multi-role RBAC admin dashboards.",
+      "Integrated REST APIs across a multi-tier architecture for scalable frontend-backend communication.",
+      "Participated in Agile SDLC — sprint planning, code reviews, and cross-team system design discussions.",
+      "Collaborated on data-flow optimization and reliability improvements across platform services.",
     ],
   },
   {
@@ -102,116 +102,91 @@ export const experiences = [
     company: "Rapid Innovation",
     period: "April 2024 – July 2024 | Ghaziabad, India",
     bullets: [
-      "Developed Next.js frontend interfaces for a deployment platform with API integrations and monitoring dashboards.",
-      "Integrated REST APIs and deployment analytics tools for operational visibility.",
-      "Improved debugging and performance optimization workflows by resolving rendering and latency bottlenecks.",
+      "Built Next.js interfaces for an internal deployment platform with REST API integration and ops dashboards.",
+      "Connected monitoring/analytics APIs for deployment visibility and runtime metrics.",
+      "Profiled and resolved frontend rendering bottlenecks — reduced latency on critical user paths.",
     ],
   },
 ];
 
 export const skillCategories = [
   {
-    icon: "fa-code",
-    title: "Programming",
-    skills: ["Python", "C++", "JavaScript", "SQL", "HTML5", "CSS3"],
-  },
-  {
-    icon: "fa-sitemap",
-    title: "Core Computer Science",
-    skills: [
-      "Data Structures & Algorithms",
-      "OOP & SOLID Principles",
-      "Design Patterns",
-      "Low-Level Design (LLD)",
-      "System Design",
-      "Distributed Computing",
-      "Database Systems",
-      "Query Optimization",
-      "Operating Systems",
-      "Networking",
-      "Concurrency",
-      "Big-O Analysis",
-    ],
-  },
-  {
     icon: "fa-brain",
-    title: "LLM & AI Engineering",
+    title: "AI & LLM Engineering",
     skills: [
       "Prompt Engineering",
-      "LLM Integration",
+      "LangChain",
       "RAG Pipelines",
       "AI Agents",
       "Agentic Workflows",
-      "Chain-of-Thought",
-      "LangChain",
-      "OpenAI APIs",
-      "Anthropic APIs",
-      "Claude Code",
-      "Codex",
-      "Vector Databases",
-      "Embedding Pipelines",
-    ],
-  },
-  {
-    icon: "fa-network-wired",
-    title: "Workflow & Orchestration",
-    skills: [
-      "Workflow Orchestrator Systems",
       "OpenClaw",
       "Hermes",
-      "Multi-step LLM Pipelines",
-      "API Orchestration",
-      "AI Workflow Automation",
+      "OpenAI APIs",
+      "Anthropic APIs",
+      "Vector Databases",
+      "Embedding Pipelines",
     ],
   },
   {
     icon: "fa-server",
     title: "Backend & Distributed Systems",
     skills: [
+      "Python",
       "FastAPI",
       "Node.js",
       "REST APIs",
       "Microservices",
-      "Multi-tier Systems",
       "Redis",
       "Kafka",
       "Event-Driven Architecture",
+      "SQL",
       "Fault-Tolerant Systems",
       "High Availability",
     ],
   },
   {
-    icon: "fa-chart-bar",
-    title: "Monitoring & Observability",
+    icon: "fa-network-wired",
+    title: "Orchestration & Architecture",
     skills: [
-      "Grafana",
-      "SigNoz",
-      "Logging",
-      "Monitoring",
-      "OpenTelemetry Concepts",
-      "Cost Optimization",
-      "Performance Benchmarking",
-      "Latency Optimization",
+      "Workflow Orchestrator Systems",
+      "Multi-step LLM Pipelines",
+      "API Orchestration",
+      "System Design",
+      "Low-Level Design (LLD)",
+      "Multi-tier Systems",
+      "Distributed Computing",
     ],
   },
   {
     icon: "fa-laptop-code",
     title: "Frontend",
-    skills: ["React.js", "Next.js", "React Flow", "Zustand", "Bootstrap"],
+    skills: ["React.js", "Next.js", "React Flow", "JavaScript", "TypeScript", "Zustand", "HTML5", "CSS3"],
   },
   {
-    icon: "fa-tools",
-    title: "Tools & Practices",
+    icon: "fa-chart-bar",
+    title: "Observability & Performance",
     skills: [
-      "GitHub",
-      "CI/CD Pipelines",
-      "Stripe Payments",
-      "Razorpay",
-      "Agile Methodology",
-      "SDLC",
-      "Problem Solving",
-      "Documentation",
-      "Testing",
+      "Grafana",
+      "SigNoz",
+      "OpenTelemetry Concepts",
+      "Logging & Monitoring",
+      "Latency Optimization",
+      "Performance Benchmarking",
+    ],
+  },
+  {
+    icon: "fa-sitemap",
+    title: "Core CS & Engineering Practices",
+    skills: [
+      "Data Structures & Algorithms",
+      "OOP & SOLID",
+      "Design Patterns",
+      "C++",
+      "Database Systems",
+      "Query Optimization",
+      "CI/CD",
+      "Git",
+      "Agile/SDLC",
     ],
   },
 ];
@@ -221,11 +196,11 @@ export const projects = [
     title: "Ruh AI Agentic Platform",
     tech: "FastAPI • Python • Node.js • LangChain • OpenClaw • Hermes • Redis • Kafka • Grafana • SigNoz • React Flow",
     bullets: [
-      "Built an Agentic Workforce Platform allowing users to design, deploy, and execute end-to-end AI agents in sandboxed runtimes.",
-      "Developed a visual Workflow Orchestrator (React Flow) for building multi-step agent pipelines with user-defined task flows.",
-      "Orchestrated real-time event distribution and task execution using Kafka and Redis for low-latency, fault-tolerant workflow execution.",
-      "Integrated OpenClaw and Hermes agent modules with OpenAI, Anthropic, and Claude Code API interfaces.",
-      "Deployed comprehensive system health dashboards in Grafana and SigNoz to benchmark agent latency and resource consumption.",
+      "Production Agentic Workforce Platform — design, deploy, and execute end-to-end AI agents in isolated sandbox runtimes.",
+      "Visual Workflow Orchestrator (React Flow) for composing multi-step agent DAGs with configurable task dependencies.",
+      "Kafka/Redis event bus for real-time task distribution with fault-tolerant, low-latency execution semantics.",
+      "Pluggable OpenClaw/Hermes agent backends with OpenAI, Anthropic, and Claude Code API interfaces.",
+      "Grafana/SigNoz instrumentation for agent latency profiling and resource consumption benchmarking.",
     ],
     links: [
       [{ label: "GitHub Profile", href: "https://github.com/adiri77", icon: "fab fa-github" }],
@@ -235,12 +210,11 @@ export const projects = [
     title: "ModuMentor: Multi-Agent AI Automation System",
     tech: "AutoGen • Gemini 1.5 • FastAPI • Python • MCP Tools • React.js",
     bullets: [
-      "Built an agentic AI system using AutoGen integrated with Gemini 1.5 as the core reasoning engine for intelligent task execution.",
-      "Designed and orchestrated autonomous AI agents capable of understanding user requests and dynamically selecting actions.",
-      "Integrated 5 MCP tools including Tavily Web Search, Dictionary API, Gmail, Google Sheets, and Weather API for real-time information retrieval and workflow automation.",
-      "Implemented tool-calling architecture enabling agents to execute multi-step tasks with contextual understanding.",
-      "Developed backend APIs using FastAPI and Python for agent communication, tool orchestration, and workflow management.",
-      "Improved system efficiency using asynchronous API handling and modular agent workflows.",
+      "Agentic system with AutoGen + Gemini 1.5 as the core reasoning engine for dynamic task decomposition.",
+      "Autonomous agents with tool-calling architecture for multi-step execution with contextual state.",
+      "Integrated 5 MCP tools: Tavily Web Search, Dictionary API, Gmail, Google Sheets, and Weather API.",
+      "FastAPI backend for agent IPC, tool orchestration, and async workflow scheduling.",
+      "Async API handlers and modular agent graphs for throughput optimization.",
     ],
     links: [
       [{ label: "Live Demo", href: "https://modumentor-client.netlify.app/", icon: "fa-globe" }],
@@ -255,12 +229,12 @@ export const projects = [
     title: "NeuroHR AI: Enterprise HRMS & AI Recruitment Platform",
     tech: "Next.js 14 • TypeScript • Express.js • FastAPI • MongoDB • Groq (Llama 3.3) • Gemini • scikit-learn • Google OAuth • Render",
     bullets: [
-      "Built a production HRMS with a 12-step Groq-first hiring pipeline: org knowledge base → grounded JD generation → multi-step resume SOP screening → 15-question AI voice interviews → human panel → offer accept/decline → employee onboarding.",
-      "Architected a dedicated FastAPI ML microservice (20+ endpoints) orchestrating Llama 3.3 70B for screening, interview evaluation, tailored question generation, and HR email synthesis with token budgeting, JSON schema enforcement, and Gemini Flash fallback.",
-      "Engineered KB-grounded JD generation: catalog markdown → Groq tech-stack extraction → must-have/nice-to-have skill mapping → 7-section job descriptions tied to real repo stacks instead of generic templates.",
-      "Implemented harness-style resume screening SOPs (10-step fresher / 8-step experienced) returning dimension scores, skill gaps, and human-escalation flags; auto-shortlist at ≥80% JD match with human-in-the-loop gates and no auto-reject.",
-      "Designed 5-dimension weighted interview evaluation (Technical, Problem Solving, Communication, Culture, Experience) with composite hiring score (80% resume + 20% interview) and per-candidate Groq question fallbacks when LLM JSON fails.",
-      "Deployed full stack on Netlify + Render with dual Gmail OAuth (HR + Agent), Google Calendar Meet scheduling, scikit-learn CSV training to .pkl artifacts, and synchronous offer/leave email delivery for serverless reliability.",
+      "12-step Groq-first hiring pipeline: KB ingestion → grounded JD generation → resume SOP screening → AI voice interviews → panel review → offer/onboarding.",
+      "FastAPI ML microservice (20+ endpoints) orchestrating Llama 3.3 70B with token budgeting, JSON schema enforcement, and Gemini Flash fallback.",
+      "KB-grounded JD generation via catalog markdown parsing, tech-stack extraction, and structured 7-section output.",
+      "Harness-style resume screening SOPs (10-step fresher / 8-step experienced) with dimension scoring and ≥80% auto-shortlist gates.",
+      "5-dimension weighted interview evaluation with composite hiring score (80% resume + 20% interview).",
+      "Deployed on Netlify + Render with dual Gmail OAuth, Google Calendar Meet, and sklearn .pkl artifact training.",
     ],
     links: [
       [{ label: "Live Demo", href: "https://neurohrai.netlify.app/", icon: "fa-globe" }],
@@ -271,12 +245,11 @@ export const projects = [
     title: "TaskFlow: Team Task Management Platform",
     tech: "React.js • Node.js • Express.js • MongoDB • JWT • RBAC • Tailwind CSS",
     bullets: [
-      "Developed a full-stack task management and collaboration platform for organizing projects and tracking team workflows.",
-      "Built an interactive Kanban board with task stages including To Do, In Progress, Review, and Completed.",
-      "Implemented JWT authentication and Role-Based Access Control (RBAC) for secure user and admin access.",
-      "Developed REST APIs using Node.js and Express.js for task creation, assignment, and status updates.",
-      "Integrated MongoDB for efficient task storage and real-time data synchronization.",
-      "Designed responsive user interfaces using React.js and Tailwind CSS with optimized state management.",
+      "Full-stack Kanban task management with To Do → In Progress → Review → Completed workflow stages.",
+      "JWT auth and RBAC for role-scoped user/admin access control.",
+      "Express.js REST APIs for task CRUD, assignment, and status transitions.",
+      "MongoDB persistence layer with real-time state synchronization across clients.",
+      "Responsive React.js UI with Tailwind CSS and optimized component state.",
     ],
     links: [
       [{ label: "Live Demo", href: "https://tech-task-management-fe.vercel.app/", icon: "fa-globe" }],
@@ -290,10 +263,9 @@ export const projects = [
     title: "StudyNotion",
     tech: "MERN Stack • React.js • Node.js • Express.js • MongoDB • Razorpay • JWT",
     bullets: [
-      "Built a full-stack learning platform with secure JWT-based authentication, course creation, enrollment tracking, and payments.",
-      "Integrated Razorpay for secure transaction flows and course purchase workflows.",
-      "Implemented optimized search functionality applying data structures and algorithms to improve backend retrieval workflows.",
-      "Applied computer science fundamentals to optimize backend data serialization and scalable user workflows.",
+      "Full-stack LMS with JWT auth, course CRUD, enrollment tracking, and Razorpay payment integration.",
+      "Optimized search/retrieval layer using DSA-backed indexing for course discovery.",
+      "REST API layer with structured data serialization for scalable enrollment workflows.",
     ],
     links: [
       [{ label: "Source Code", href: "https://github.com/adiri77/StudyNotion", icon: "fab fa-github" }],
@@ -303,9 +275,9 @@ export const projects = [
     title: "Centralised Grievance System Portal",
     tech: "Java • PHP • Bootstrap • MySQL • Smart India Hackathon 2022",
     bullets: [
-      "Developed a grievance management portal for Institutions of AKTU to raise technical and management issues directly to AICTE.",
-      "Designed secure roles, database architectures, and remote grievance routing nodes for streamlined issue handling.",
-      "Recognized as a Ranker at Smart India Hackathon 2022 for outstanding design, functionality, and social impact.",
+      "Role-based grievance routing portal for AKTU institutions to escalate issues to AICTE.",
+      "MySQL schema design with secure role hierarchies and remote grievance node routing.",
+      "SIH 2022 Ranker — recognized for system design, functionality, and civic impact.",
     ],
     links: [] as ProjectLink[][],
   },
@@ -313,9 +285,9 @@ export const projects = [
     title: "Data Visualization Dashboard",
     tech: "MERN Stack • React.js • Node.js • MongoDB • Chart.js",
     bullets: [
-      "Developed a data visualization dashboard to analyze complex metrics including intensity, likelihood, and relevance.",
-      "Implemented interactive charts and responsive filters for multi-dimensional data analysis.",
-      "Created backend REST APIs in Node.js to aggregate and stream database variables from MongoDB.",
+      "Interactive dashboard for multi-dimensional metric analysis (intensity, likelihood, relevance).",
+      "Chart.js visualizations with responsive filter controls for ad-hoc data exploration.",
+      "Node.js aggregation APIs streaming computed variables from MongoDB.",
     ],
     links: [
       [
@@ -331,9 +303,9 @@ export const projects = [
     title: "TodoList Backend API",
     tech: "Express.js • MongoDB • Mongoose • Postman",
     bullets: [
-      "Engineered a backend-oriented task management RESTful API supporting flexible CRUD operations.",
-      "Designed clean database schemas with Mongoose and validation checks for task persistence.",
-      "Employed Postman for rigorous API testing and validation of data payloads.",
+      "RESTful task management API with full CRUD and Mongoose schema validation.",
+      "Structured document models with input validation and persistence guarantees.",
+      "Postman test suites for endpoint contract verification.",
     ],
     links: [
       [{ label: "Source Code", href: "https://github.com/adiri77/BackendTodo", icon: "fab fa-github" }],
@@ -343,9 +315,9 @@ export const projects = [
     title: "NewsBomber",
     tech: "React.js • JavaScript • Bootstrap • News API",
     bullets: [
-      "Developed a dynamic news aggregation platform offering real-time updates across multiple custom categories.",
-      "Integrated News API to stream articles with client-side caching to reduce redundant network requests.",
-      "Implemented theme switching (dark/light mode) with optimized React hooks for a polished user experience.",
+      "News aggregation SPA with category-based real-time article feeds via News API.",
+      "Client-side caching layer to minimize redundant API round-trips.",
+      "Dark/light theme toggle implemented with optimized React hook patterns.",
     ],
     links: [
       [{ label: "Source Code", href: "https://github.com/adiri77/newsbomber", icon: "fab fa-github" }],
@@ -357,26 +329,26 @@ export const achievements = [
   {
     title: "HackerRank 5-Star Coder",
     content:
-      "Achieved a 5-star rating in Problem Solving on HackerRank, demonstrating strong algorithmic proficiency and DSA mastery.",
+      "5-star Problem Solving rating on HackerRank — demonstrates advanced DSA and algorithmic optimization capability.",
   },
   {
     title: "Smart India Hackathon Ranker",
     content:
-      "Distinguished ranker at Smart India Hackathon 2022 for building a Centralized Grievance Portal connecting AKTU institutions with AICTE.",
+      "Ranked at SIH 2022 for the Centralized Grievance Portal — AKTU-to-AICTE institutional grievance routing system.",
   },
   {
     title: "Vidya-Mandir Cricket Captain",
     content:
-      "Served as Cricket Team Captain and won the Vidya-Mandir Cricket Tournament in 2018, demonstrating leadership and teamwork.",
+      "Team Captain — won the Vidya-Mandir Cricket Tournament 2018; led cross-functional coordination under competitive pressure.",
   },
 ];
 
 export const additionalInfo = [
   {
     icon: "fa-users",
-    title: "Soft Skills",
+    title: "Engineering Mindset",
     content:
-      "Problem Solving, Team Collaboration, Agile Methodology, Communication, Adaptability, Comfort with Ambiguity",
+      "Systems thinking, root-cause debugging, cross-functional collaboration, ambiguity tolerance, technical communication",
   },
   {
     icon: "fa-language",
@@ -385,29 +357,29 @@ export const additionalInfo = [
   },
   {
     icon: "fa-tasks",
-    title: "Work Practices",
+    title: "Development Practices",
     content:
-      "Git Version Control, CI/CD Pipelines, System Documentation, Performance Benchmarking, Code Reviews, SDLC Best Practices",
+      "Git, CI/CD pipelines, code reviews, API contract design, performance profiling, technical documentation, Agile SDLC",
   },
   {
     icon: "fa-brain",
-    title: "Technical Focus",
+    title: "Domain Focus",
     content:
-      "AI Workflow Orchestration, Distributed Systems, Event-Driven Architectures, Observability, Latency Optimization, Scalable System Design",
+      "Agentic AI orchestration, distributed event-driven systems, LLM inference pipelines, observability, scalable backend architecture",
   },
   {
     icon: "fa-heart",
     title: "Interests",
     content:
-      "Agentic AI Frameworks, Large Language Models, Distributed Systems Architecture, Open Source Contribution, Cricket",
+      "Agent frameworks, LLM systems research, distributed systems design, open-source contribution, cricket",
   },
 ];
 
 export const contactLinks = [
   {
-    href: "mailto:adityasingh321100@gmail.com",
+    href: "mailto:adityasingh3210@gmail.com",
     icon: "fa-envelope",
-    label: "adityasingh321100@gmail.com",
+    label: "adityasingh3210@gmail.com",
   },
   { href: "tel:+919026201633", icon: "fa-phone", label: "+91-9026201633" },
   {

@@ -52,7 +52,7 @@ export default function Hero() {
           animate="show"
           variants={heroItem(0.39)}
         >
-          Software Development Engineer | AI Agents &amp; Workflow Orchestration | Distributed Systems &amp; Backend
+          SDE — Agentic AI Systems · LLM Orchestration · Distributed Backend Architecture
         </motion.p>
 
         <motion.div

@@ -8,10 +8,10 @@ export default function ProjectCard({ title, subtitle, children }: ProjectCardPr
   return (
     <div className="project-card">
       <div className="project-header">
-        <h3>{title}</h3>
+        <h3 className="project-title">{title}</h3>
         {subtitle ? <p className="project-tech">{subtitle}</p> : null}
       </div>
-      <div className="project-body">{children}</div>
+      <div className="project-body card-body">{children}</div>
     </div>
   );
 }

@@ -11,7 +11,7 @@ export default function Contact() {
     <FadeInSection id="contact">
       <SectionTitle>Let&apos;s Connect</SectionTitle>
       <motion.div
-        className="contact-content rounded-3xl p-6 text-center sm:p-8 md:p-10"
+        className="contact-content rounded-2xl p-6 text-center sm:p-7 md:p-8"
         whileHover={{ y: -4 }}
         transition={{ type: "spring", stiffness: 220, damping: 18 }}
       >

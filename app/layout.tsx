@@ -17,7 +17,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "Aditya Singh - Portfolio",
   description:
-    "Software Development Engineer portfolio showcasing workflow orchestration platforms, AI/LLM integrations, distributed systems, and backend development.",
+    "SDE portfolio — agentic AI systems, LLM orchestration, distributed backend architecture, and production microservices.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

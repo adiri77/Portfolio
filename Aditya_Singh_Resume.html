@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>
-   Aditya Singh - Resume
-  </title>
+<title>Aditya Singh - Resume</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
 <style>
    * {
             margin: 0;
@@ -16,79 +14,85 @@
         }
         
         body {
-            font-family: 'Arial', sans-serif;
-            font-size: 10pt;
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            font-size: 9pt;
             line-height: 1.3;
-            color: #333;
+            color: #2d3748;
             max-width: 8.5in;
             margin: 0 auto;
-            padding: 0.4in;
-            background: white;
+            padding: 0.35in 0.4in;
+            background: #ffffff;
         }
         
         .header {
             text-align: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #2c3e50;
+            margin-bottom: 12px;
+            padding: 12px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
         .name {
             font-size: 22pt;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 3px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
         }
         
         .contact {
-            font-size: 9pt;
-            color: #555;
-            line-height: 1.2;
+            font-size: 8.5pt;
+            color: #f7fafc;
+            line-height: 1.3;
         }
 
         .contact a {
-            color: #2980b9;
+            color: #ffffff;
             text-decoration: none;
-            transition: color 0.2s ease;
+            font-weight: 500;
+            transition: opacity 0.2s;
         }
 
         .contact a:hover {
-            color: #1e6091;
-            text-decoration: underline;
+            opacity: 0.8;
         }
         
         .section {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         
         .section-title {
-            font-size: 11pt;
-            font-weight: bold;
-            color: #2c3e50;
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: #667eea;
             text-transform: uppercase;
-            border-bottom: 1px solid #bdc3c7;
+            border-bottom: 2px solid #667eea;
             padding-bottom: 2px;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
         }
         
         .content {
-            margin-left: 5px;
+            margin-left: 4px;
         }
         
         .education-item, .project-item, .experience-item {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            padding: 4px 0;
         }
         
         .project-title, .degree {
-            font-weight: bold;
-            color: #2c3e50;
-            font-size: 10pt;
+            font-weight: 700;
+            color: #2d3748;
+            font-size: 9.5pt;
         }
         
         .institution, .tech-stack {
             font-style: italic;
-            color: #666;
-            font-size: 9pt;
+            color: #718096;
+            font-size: 8pt;
+            margin-top: 1px;
         }
         
         .project-description ul {
@@ -98,265 +102,148 @@
         
         .project-description li {
             margin-bottom: 1px;
-            font-size: 9pt;
+            font-size: 8pt;
+            line-height: 1.3;
+            color: #4a5568;
+        }
+
+        .project-description li strong {
+            color: #2d3748;
         }
 
         .project-links {
-            margin-top: 4px;
+            margin-top: 3px;
             display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
+            gap: 6px;
         }
 
         .project-link {
-            font-size: 8pt;
-            color: #2980b9;
+            font-size: 7pt;
+            color: #667eea;
             text-decoration: none;
             padding: 2px 6px;
-            background: #f8f9fa;
+            background: #edf2f7;
             border-radius: 3px;
-            border: 1px solid #e9ecef;
-            transition: all 0.2s ease;
+            border: 1px solid #cbd5e0;
+            font-weight: 600;
+            transition: all 0.2s;
         }
 
         .project-link:hover {
-            background: #2980b9;
+            background: #667eea;
             color: white;
-            transform: translateY(-1px);
         }
 
         .project-link i {
-            font-size: 7pt;
+            font-size: 6pt;
             margin-right: 2px;
         }
         
         .skills-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 6px;
+            gap: 8px;
+            margin-bottom: 4px;
         }
         
         .skill-item {
             flex: 1;
-            min-width: 200px;
+            min-width: 180px;
+            background: #f7fafc;
+            padding: 3px 6px;
+            border-radius: 3px;
+            border-left: 3px solid #667eea;
         }
         
         .skill-item strong {
-            color: #2c3e50;
-            font-size: 9pt;
+            color: #667eea;
+            font-size: 8pt;
+            font-weight: 700;
         }
         
         .skill-item span {
-            font-size: 9pt;
-        }
-        
-        .date-location {
-            font-size: 8.5pt;
-            color: #666;
-            font-style: italic;
-            margin-top: 2px;
-        }
-        
-        .experience-description {
-            font-size: 9pt;
-            margin-top: 3px;
-            line-height: 1.4;
+            font-size: 8pt;
+            color: #4a5568;
         }
         
         .achievement-item {
-            margin-bottom: 4px;
-            font-size: 9pt;
+            margin-bottom: 3px;
+            font-size: 8pt;
+            color: #4a5568;
+            padding-left: 4px;
+        }
+
+        .achievement-item strong {
+            color: #667eea;
         }
         
         @media print {
             body {
-                padding: 0.3in;
-                font-size: 9pt;
+                padding: 0.3in 0.35in;
             }
-            .name {
-                font-size: 20pt;
+            .header {
+                box-shadow: none;
             }
-            .section-title {
-                font-size: 10pt;
+            .project-link:hover {
+                background: #edf2f7;
+                color: #667eea;
             }
         }
   </style>
 </head>
 <body>
 <div class="header">
-<div class="name">
-    ADITYA SINGH
-   </div>
+<div class="name">ADITYA SINGH</div>
 <div class="contact">
-    adityasingh321100@gmail.com | +91-9026201633
-    <br/>
-    <a href="https://www.linkedin.com/in/aditya-kumar-singh-4a9379208" target="_blank">
-     linkedin.com/in/aditya-kumar-singh-4a9379208
-    </a>
-    |
-    <a href="https://github.com/adiri77" target="_blank">
-     github.com/adiri77
-    </a>
+    adityasingh321100@gmail.com | +91-9026201633 | 
+    <a href="https://www.linkedin.com/in/aditya-kumar-singh-4a9379208" target="_blank">LinkedIn</a> | 
+    <a href="https://github.com/adiri77" target="_blank">GitHub</a>
    </div>
 </div>
 
 <div class="section">
-<div class="section-title">
-    Technical Skills
-   </div>
+<div class="section-title">Technical Skills</div>
 <div class="content">
 <div class="skills-row">
-<div class="skill-item">
-<strong>
-     Software Development:
-    </strong>
-<span>Full-Stack Development, Next.js, ReactJS, Node.js, Express.js, MongoDB, SQL</span>
-</div>
-<div class="skill-item">
-<strong>
-     Languages:
-    </strong>
-<span>JavaScript, Python, Java, C++</span>
-</div>
+<div class="skill-item"><strong>Languages:</strong> <span>JavaScript, Python, Java, C++</span></div>
+<div class="skill-item"><strong>Frontend:</strong> <span>Next.js, ReactJS, React Flow, Zustand, Bootstrap, HTML, CSS</span></div>
 </div>
 <div class="skills-row">
-<div class="skill-item">
-<strong>
-     Frontend Frameworks:
-    </strong>
-<span>Next.js, ReactJS, React Flow</span>
-</div>
-<div class="skill-item">
-<strong>
-     State Management:
-    </strong>
-<span>Zustand</span>
-</div>
+<div class="skill-item"><strong>Backend:</strong> <span>Node.js, Express.js, gRPC, SpringBoot, PHP</span></div>
+<div class="skill-item"><strong>Databases:</strong> <span>MongoDB, SQL</span></div>
 </div>
 <div class="skills-row">
-<div class="skill-item">
-<strong>
-     Styling & UI:
-    </strong>
-<span>Bootstrap, HTML, CSS</span>
-</div>
-<div class="skill-item">
-<strong>
-     Backend:
-    </strong>
-<span>Node.js, Express.js, gRPC, SpringBoot, PHP</span>
-</div>
-</div>
-<div class="skills-row">
-<div class="skill-item">
-<strong>
-     Databases:
-    </strong>
-<span>MongoDB, SQL</span>
-</div>
-<div class="skill-item">
-<strong>
-     Web3 & Blockchain:
-    </strong>
-<span>EVM, Non-EVM, Blockchain Development</span>
-</div>
-</div>
-<div class="skills-row">
-<div class="skill-item">
-<strong>
-     AI & Tools:
-    </strong>
-<span>LangChain, Strapi CMS</span>
-</div>
-<div class="skill-item">
-<strong>
-     Tools & Platforms:
-    </strong>
-<span>Git, AWS, Postman, Stripe</span>
-</div>
-</div>
-<div class="skills-row">
-<div class="skill-item">
-<strong>
-     Concepts:
-    </strong>
-<span>Data Structures & Algorithms, OOPS</span>
-</div>
+<div class="skill-item"><strong>AI & Blockchain:</strong> <span>LangChain, EVM/Non-EVM Blockchain Development</span></div>
+<div class="skill-item"><strong>Tools:</strong> <span>Git, AWS, Postman, Stripe, Strapi CMS</span></div>
 </div>
 </div>
 </div>
 
 <div class="section">
-<div class="section-title">
-    Experience
-   </div>
+<div class="section-title">Experience</div>
 <div class="content">
 <div class="experience-item">
-<div class="degree">
-    Software Developer
-   </div>
-<div class="institution">
-    Rapid Innovation | Jan'24 - Present
-   </div>
-<div class="project-description" style="margin-top: 4px;">
-<div style="font-weight: bold; color: #2c3e50; font-size: 9pt; margin-top: 4px; margin-bottom: 2px;">
-    Key Projects:
-   </div>
-<div style="margin-left: 12px;">
-<div style="font-style: italic; color: #666; font-size: 9pt; margin-top: 4px; margin-bottom: 2px;">
-    RUH.ai
-   </div>
+<div class="degree">Software Developer</div>
+<div class="institution">Rapid Innovation | Jan'24 - Present</div>
+<div class="project-description" style="margin-top: 3px;">
+<div style="margin-left: 8px;">
+<div style="font-style: italic; color: #718096; font-size: 8.5pt; margin-top: 2px; margin-bottom: 1px; font-weight: 600;">RUH.ai - AI Agent Platform</div>
 <ul>
-<li>
-    Built a high-performance <strong>marketing website</strong> using <strong>Next.js</strong> with <strong>Strapi CMS</strong> and managed global theming and UI state using <strong>Zustand</strong>
-   </li>
-<li>
-    Developed a <strong>visual workflow builder</strong> similar to <strong>n8n and LangFlow</strong> using <strong>React Flow</strong>, implementing <strong>agent and MCP-based workflow orchestration</strong> with an intuitive, scalable UI
-   </li>
-<li>
-    Received <strong>strong internal recognition</strong> for UI/UX quality and system architecture
-   </li>
-<li>
-    Contributed to building an <strong>SDR AI agent system</strong>, working on <strong>agent orchestration and streaming responses</strong> using <strong>LangChain, Python, and gRPC</strong>
-   </li>
-<li>
-    Handled real-time data flow and frontend integration for AI-driven workflows
-   </li>
-<li>
-    Researched and implemented <strong>Stripe payment integration</strong> across the RUH platform, ensuring secure and seamless payment flows for platform users
-   </li>
+<li>Architected <strong>visual workflow builder</strong> using <strong>React Flow</strong> for <strong>agent/MCP-based orchestration</strong> (n8n/LangFlow-like)</li>
+<li>Built <strong>SDR AI agent system</strong> with <strong>LangChain, Python, gRPC</strong> for real-time streaming and agent orchestration</li>
+<li>Developed high-performance marketing site with <strong>Next.js, Strapi CMS, Zustand</strong> for global state management</li>
+<li>Integrated <strong>Stripe payment system</strong> with secure transaction flows; recognized for UI/UX excellence</li>
 </ul>
-<div style="font-style: italic; color: #666; font-size: 9pt; margin-top: 6px; margin-bottom: 2px;">
-    Blockchain Payment Ecosystem
-   </div>
+<div style="font-style: italic; color: #718096; font-size: 8.5pt; margin-top: 3px; margin-bottom: 1px; font-weight: 600;">Blockchain Payment Ecosystem</div>
 <ul>
-<li>
-    Developed a <strong>blockchain-based payment ecosystem</strong> similar to GPay/Paytm, enabling transactions via <strong>blockchain tokens and NFTs</strong> instead of fiat currency
-   </li>
-<li>
-    Built and maintained <strong>multiple platforms</strong> including Blockchain Management Platform, User Registration & Management Platform, and Client Payment Application for blockchain-based transactions
-   </li>
-<li>
-    Implemented <strong>scalable frontend architecture</strong> using <strong>Next.js</strong>, efficiently handling APIs with <strong>parallel client-side and server-side rendering</strong>
-   </li>
-<li>
-    Collaborated on <strong>backend development</strong> using <strong>Node.js and MongoDB</strong>, ensuring smooth integration with blockchain services
-   </li>
+<li>Engineered <strong>blockchain payment platform</strong> (GPay/Paytm-like) supporting <strong>NFT/token transactions</strong></li>
+<li>Built <strong>3 interconnected platforms</strong>: Blockchain Management, User Registration, Client Payment Application</li>
+<li>Implemented <strong>scalable Next.js architecture</strong> with <strong>parallel SSR/CSR</strong>; backend with <strong>Node.js/MongoDB</strong></li>
 </ul>
-<div style="font-style: italic; color: #666; font-size: 9pt; margin-top: 6px; margin-bottom: 2px;">
-    RapidOps (Internal Product)
-   </div>
+<div style="font-style: italic; color: #718096; font-size: 8.5pt; margin-top: 3px; margin-bottom: 1px; font-weight: 600;">RapidOps - Internal DevOps Platform</div>
 <ul>
-<li>
-    Worked on an <strong>internal deployment and monitoring platform</strong> used by company members
-   </li>
-<li>
-    Developed <strong>frontend and backend features</strong> with detailed <strong>deployment logs and organization-level project management</strong>
-   </li>
-<li>
-    Designed APIs and UI flows for <strong>secure, scalable, organization-wide usage</strong>
-   </li>
+<li>Developed <strong>deployment monitoring platform</strong> with detailed logs and org-level project management</li>
+<li>Designed <strong>RESTful APIs</strong> and UI flows for secure, scalable multi-tenant architecture</li>
 </ul>
 </div>
 </div>
@@ -365,217 +252,77 @@
 </div>
 
 <div class="section">
-<div class="section-title">
-    PROJECTS
-   </div>
+<div class="section-title">Projects</div>
 <div class="content">
 <div class="project-item">
-<div class="project-title">
-    RUH AI
-   </div>
-<div class="tech-stack">
-    Tech Stack: Next.js, React Flow, LangChain, Python, gRPC, Strapi CMS, Zustand
-   </div>
+<div class="project-title">StudyNotion - EdTech Platform</div>
+<div class="tech-stack">MERN Stack | <a class="project-link" href="https://github.com/adiri77/StudyNotion" target="_blank"><i class="fab fa-github"></i>GitHub</a></div>
 <div class="project-description">
 <ul>
-<li>
-Built a high-performance <strong>marketing website</strong> using <strong>Next.js</strong> with <strong>Strapi CMS</strong> and managed global theming and UI state using <strong>Zustand</strong>
-</li>
-<li>
-Developed a <strong>visual workflow builder</strong> similar to <strong>n8n and LangFlow</strong> using <strong>React Flow</strong>, implementing <strong>agent and MCP-based workflow orchestration</strong> with an intuitive, scalable UI
-</li>
-<li>
-Received <strong>strong internal recognition</strong> for UI/UX quality and system architecture
-</li>
-<li>
-Contributed to building an <strong>SDR AI agent system</strong>, working on <strong>agent orchestration and streaming responses</strong> using <strong>LangChain, Python, and gRPC</strong>
-</li>
-<li>
-Handled real-time data flow and frontend integration for AI-driven workflows
-</li>
-<li>
-Researched and implemented <strong>Stripe payment integration</strong> across the RUH platform, ensuring secure and seamless payment flows for platform users
-</li>
+<li><strong>JWT authentication</strong>, course creation/enrollment, progress tracking with quiz scores and lesson completion</li>
+<li><strong>Razorpay payment integration</strong>, optimized search functionality for courses/resources</li>
 </ul>
 </div>
 </div>
 
 <div class="project-item">
-<div class="project-title">
-    StudyNotion
-   </div>
-<div class="tech-stack">
-    Tech Stack: MERN
-   </div>
+<div class="project-title">Data Visualization Dashboard</div>
+<div class="tech-stack">MERN Stack | <a class="project-link" href="https://github.com/adiri77/Data_Visualization_Dashboard-MERN-Stack-main" target="_blank"><i class="fab fa-github"></i>GitHub</a></div>
 <div class="project-description">
 <ul>
-<li>
-<strong>Authentication and User Management:</strong> Implemented secure JWT-based user authentication. Enabled user-friendly features like sign-up, log-in, and profile management.
-</li>
-<li>
-<strong>Courses and Progress Tracking:</strong> Developed course creation, enrollment, and progress tracking features. Students can monitor completed lessons, quiz scores, and overall course progress.
-</li>
-<li>
-<strong>Payment Integration and Search:</strong> Integrated Razorpay for secure payments. Implemented a quick and efficient search feature for courses and resources.
-</li>
+<li>Built analytics dashboard with <strong>interactive charts/filters</strong> for multi-dimensional data (intensity, region, topics, etc.)</li>
+<li>Designed <strong>RESTful APIs</strong> in Node.js for MongoDB data aggregation and visualization</li>
 </ul>
-</div>
-<div class="project-links">
-<a class="project-link" href="https://github.com/adiri77/StudyNotion" target="_blank">
-<i class="fab fa-github"></i> Source Code
-</a>
 </div>
 </div>
 
 <div class="project-item">
-<div class="project-title">
-    TodoList
-   </div>
-<div class="tech-stack">
-    Tech Stack: Express.js, MongoDB, Mongoose
-   </div>
+<div class="project-title">Centralised Grievance System Portal</div>
+<div class="tech-stack">Java, PHP, Bootstrap | <a class="project-link" href="https://github.com/adiri77/SIH-2022/blob/main/sih.jpg" target="_blank"><i class="fas fa-certificate"></i>Certificate</a></div>
 <div class="project-description">
 <ul>
-<li>
-Engineered a full-stack, backend-oriented task management application using Express.js, MongoDB with Mongoose.
-</li>
-<li>
-Designed and implemented core functionalities allowing users to effortlessly add, delete, update, and reset task lists.
-</li>
-<li>
-Employed Postman for rigorous API post request testing and validation.
-</li>
+<li>AKTU-AICTE grievance management system with <strong>remote PC access</strong> | <strong>Smart India Hackathon 2022 Ranker</strong></li>
 </ul>
-</div>
-<div class="project-links">
-<a class="project-link" href="https://github.com/adiri77/BackendTodo" target="_blank">
-<i class="fab fa-github"></i> Source Code
-</a>
 </div>
 </div>
 
 <div class="project-item">
-<div class="project-title">
-    Data Visualization Dashboard
-   </div>
-<div class="tech-stack">
-    Tech Stack: MERN
-   </div>
+<div class="project-title">TodoList Backend API</div>
+<div class="tech-stack">Express.js, MongoDB, Mongoose | <a class="project-link" href="https://github.com/adiri77/BackendTodo" target="_blank"><i class="fab fa-github"></i>GitHub</a></div>
 <div class="project-description">
 <ul>
-<li>
-Enabled user-friendly features like sign-up, log-in, and profile management.
-</li>
-<li>
-Developed a data visualization dashboard utilizing MERN stack to analyze variables including intensity, likelihood, relevance, year, country, topics, region, and city.
-</li>
-<li>
-Implemented interactive charts and filters for insightful data analysis.
-</li>
-<li>
-Created API in Node.js to fetch data from MongoDB database.
-</li>
+<li>RESTful API with <strong>CRUD operations</strong>, Mongoose schema design, Postman-validated endpoints</li>
 </ul>
-</div>
-<div class="project-links">
-<a class="project-link" href="https://github.com/adiri77/Data_Visualization_Dashboard-MERN-Stack-main" target="_blank">
-<i class="fab fa-github"></i> Source Code
-</a>
 </div>
 </div>
 
 <div class="project-item">
-<div class="project-title">
-    NewsBomber
-   </div>
-<div class="tech-stack">
-    Tech Stack: ReactJS, JavaScript, Bootstrap
-   </div>
+<div class="project-title">NewsBomber - News Aggregator</div>
+<div class="tech-stack">ReactJS, Bootstrap | <a class="project-link" href="https://github.com/adiri77/newsbomber" target="_blank"><i class="fab fa-github"></i>GitHub</a></div>
 <div class="project-description">
 <ul>
-<li>
-Developed a dynamic news aggregation platform offering real-time updates on a wide range of categories including sports, finance, government, and medical.
-</li>
-<li>
-Implemented user-friendly features, such as dark and bright mode, using ReactJS, Javascript and Bootstrap for an enhanced user experience. Utilized various React hooks to optimize functionality and interactivity.
-</li>
-<li>
-Seamlessly integrated data from the News API to provide users with up-to-the-minute news and information.
-</li>
+<li>Real-time news platform with <strong>News API integration</strong>, dark/light mode, React hooks optimization</li>
 </ul>
-</div>
-<div class="project-links">
-<a class="project-link" href="https://github.com/adiri77/newsbomber" target="_blank">
-<i class="fab fa-github"></i> Source Code
-</a>
-</div>
-</div>
-
-<div class="project-item">
-<div class="project-title">
-    Centralised Grievance System Portal
-   </div>
-<div class="tech-stack">
-    Tech Stack: Java, HTML, Bootstrap, JavaScript, PHP
-   </div>
-<div class="project-description">
-<ul>
-<li>
-Here Institutions of AKTU raises their technical problems to AICTE. AICTE also able to get Remote Access of college PC's.
-</li>
-<li>
-<strong>Impact:</strong> Ranker in Smart India Hackathon 2022.
-</li>
-</ul>
-</div>
-<div class="project-links">
-<a class="project-link" href="https://github.com/adiri77/SIH-2022/blob/main/sih.jpg" target="_blank">
-<i class="fas fa-certificate"></i> Certificate
-</a>
 </div>
 </div>
 </div>
 </div>
 
 <div class="section">
-<div class="section-title">
-    EDUCATION
-   </div>
+<div class="section-title">Education</div>
 <div class="content">
 <div class="education-item">
-<div class="degree">
-    Bachelor of Technology (B.Tech) - Computer Science (Data Science)
-   </div>
-<div class="institution">
-    ABES Institute of Technology | Aug'20 - July'24 | CGPA: 76.7%
-   </div>
-</div>
-
-<div class="education-item">
-<div class="degree">
-    Senior Secondary (XII) - Science
-   </div>
-<div class="institution">
-    Saraswati Vidya Mandir, Sultanpur, UP | CBSE Board | 88%
-   </div>
+<div class="degree">Bachelor of Technology - Computer Science (Data Science)</div>
+<div class="institution">ABES Institute of Technology | Aug'20 - July'24 | CGPA: 76.7%</div>
 </div>
 </div>
 </div>
 
 <div class="section">
-<div class="section-title">
-    ACHIEVEMENTS
-   </div>
+<div class="section-title">Achievements</div>
 <div class="content">
-<div class="achievement-item">
-• Distinguished as a top performer on <strong>HackerRank</strong> with a stellar <strong>5-star rating</strong>, showcasing consistent coding prowess and problem-solving acumen.
-</div>
-<div class="achievement-item">
-• Served as the Captain of the cricket team and won the Vidya-Mandir Cricket Competition '18.
-</div>
-<div class="achievement-item">
-• Successfully completed an intensive JAVA course, validating proficiency in the language and reinforcing a commitment to continuous learning.
-</div>
+<div class="achievement-item">• <strong>HackerRank 5-star</strong> rating in problem-solving | <strong>Smart India Hackathon 2022 Ranker</strong></div>
+<div class="achievement-item">• Cricket Team Captain - Vidya-Mandir Cricket Competition '18 Winner</div>
 </div>
 </div>
 

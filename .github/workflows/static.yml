@@ -32,7 +32,7 @@ jobs:
 
       - name: Build static export
         env:
-          NEXT_PUBLIC_BASE_PATH: /Portfolio
+          NEXT_PUBLIC_BASE_PATH: /AdityaPortfolio
         run: npm run build
 
       - name: Setup Pages
