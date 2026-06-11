@@ -9,7 +9,7 @@ type SectionTitleProps = {
 export default function SectionTitle({ children }: SectionTitleProps) {
   return (
     <motion.h2
-      className="section-title mb-8 text-center text-3xl font-bold text-aqua-dark sm:mb-10 sm:text-4xl md:mb-12"
+      className="section-title mb-6 text-center text-3xl font-bold text-aqua-dark sm:mb-8 sm:text-4xl md:mb-10"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

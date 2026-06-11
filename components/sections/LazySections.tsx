@@ -20,8 +20,8 @@ export default function LazySections() {
       <Certifications />
       <Experience />
       <Skills />
-      <Projects />
       <Achievements />
+      <Projects />
       <AdditionalInfo />
       <Contact />
     </div>

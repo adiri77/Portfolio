@@ -5,8 +5,8 @@ export const navLinks = [
   { href: "#certifications", icon: "fa-certificate", label: "Certifications" },
   { href: "#experience", icon: "fa-briefcase", label: "Experience" },
   { href: "#skills", icon: "fa-cogs", label: "Skills" },
-  { href: "#projects", icon: "fa-code", label: "Projects" },
   { href: "#achievements", icon: "fa-trophy", label: "Achievements" },
+  { href: "#projects", icon: "fa-code", label: "Projects" },
   { href: "#additional-info", icon: "fa-info-circle", label: "Additional Info" },
   { href: "#contact", icon: "fa-envelope", label: "Contact" },
 ] as const;
