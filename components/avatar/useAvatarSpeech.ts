@@ -6,6 +6,7 @@ import { AVATAR_TOPICS, type AvatarTopic } from "@/config/avatar";
 const FEMALE_VOICE_HINTS = [
   "female",
   "woman",
+  "girl",
   "samantha",
   "zira",
   "susan",
@@ -28,6 +29,16 @@ const FEMALE_VOICE_HINTS = [
   "laura",
   "olivia",
   "sophia",
+  "allison",
+  "joanna",
+  "kendra",
+  "kimberly",
+  "ivy",
+  "salli",
+  "raveena",
+  "aditi",
+  "amy",
+  "nicole",
 ];
 
 const MALE_VOICE_PRIORITY: Array<{ pattern: RegExp; score: number }> = [
@@ -44,6 +55,12 @@ const MALE_VOICE_PRIORITY: Array<{ pattern: RegExp; score: number }> = [
   { pattern: /\bfred\b/i, score: 680 },
   { pattern: /\brichard\b/i, score: 660 },
   { pattern: /\bpaul\b/i, score: 640 },
+  { pattern: /\bbrian\b/i, score: 620 },
+  { pattern: /\beric\b/i, score: 600 },
+  { pattern: /\broger\b/i, score: 580 },
+  { pattern: /\bchristopher\b/i, score: 560 },
+  { pattern: /\bsteffan\b/i, score: 540 },
+  { pattern: /\bsteven\b/i, score: 520 },
 ];
 
 function isFemaleVoice(name: string): boolean {
@@ -51,29 +68,37 @@ function isFemaleVoice(name: string): boolean {
   return FEMALE_VOICE_HINTS.some((hint) => normalized.includes(hint));
 }
 
-function scoreMaleVoice(voice: SpeechSynthesisVoice): number {
+function isExplicitlyMaleVoice(voice: SpeechSynthesisVoice): boolean {
   const name = voice.name;
   const lang = voice.lang.toLowerCase();
 
   if (!lang.startsWith("en") || isFemaleVoice(name)) {
+    return false;
+  }
+
+  if (/google/i.test(name) && !/\bmale\b/i.test(name)) {
+    return false;
+  }
+
+  return MALE_VOICE_PRIORITY.some(({ pattern }) => pattern.test(name));
+}
+
+function scoreMaleVoice(voice: SpeechSynthesisVoice): number {
+  if (!isExplicitlyMaleVoice(voice)) {
     return Number.NEGATIVE_INFINITY;
   }
 
   let score = 0;
 
   for (const { pattern, score: points } of MALE_VOICE_PRIORITY) {
-    if (pattern.test(name)) {
+    if (pattern.test(voice.name)) {
       score = Math.max(score, points);
     }
   }
 
-  if (score === 0) {
-    return Number.NEGATIVE_INFINITY;
-  }
-
+  const lang = voice.lang.toLowerCase();
   if (lang.startsWith("en-us")) score += 40;
   if (voice.localService) score += 20;
-  if (/google/i.test(name) && !/male/i.test(name)) score -= 300;
 
   return score;
 }
@@ -87,12 +112,12 @@ function pickMaleVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | u
   return ranked[0]?.voice;
 }
 
-function waitForVoices(timeoutMs = 500): Promise<SpeechSynthesisVoice[]> {
+function waitForVoices(timeoutMs = 1200): Promise<SpeechSynthesisVoice[]> {
   return new Promise((resolve) => {
     const synth = window.speechSynthesis;
     const resolveIfReady = () => {
       const voices = synth.getVoices();
-      if (voices.length > 0) {
+      if (pickMaleVoice(voices)) {
         resolve(voices);
         return true;
       }
@@ -172,14 +197,15 @@ export function useAvatarSpeech() {
         if (requestId !== speakRequestRef.current) return;
 
         const maleVoice = pickMaleVoice(voices);
+        if (!maleVoice) {
+          return;
+        }
+
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.rate = 0.92;
-        utterance.pitch = 0.82;
-        utterance.lang = maleVoice?.lang ?? "en-US";
-
-        if (maleVoice) {
-          utterance.voice = maleVoice;
-        }
+        utterance.pitch = 0.8;
+        utterance.lang = maleVoice.lang;
+        utterance.voice = maleVoice;
 
         utterance.onstart = () => setIsSpeaking(true);
         utterance.onend = () => setIsSpeaking(false);
