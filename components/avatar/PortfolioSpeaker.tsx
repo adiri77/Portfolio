@@ -105,7 +105,6 @@ export default function PortfolioSpeaker() {
               variant="primary"
               size="md"
               icon="fas fa-play"
-              disabled={isSpeaking}
               onClick={() => speakTopic(currentTopic)}
             >
               Listen

@@ -44,48 +44,23 @@ function isFemaleVoice(name: string): boolean {
   return FEMALE_VOICE_HINTS.some((hint) => normalized.includes(hint));
 }
 
-function isEnglishVoice(voice: SpeechSynthesisVoice): boolean {
-  return voice.lang.toLowerCase().startsWith("en");
-}
-
 function pickMaleVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | undefined {
-  const englishVoices = voices.filter(isEnglishVoice);
+  const englishVoices = voices.filter((voice) => voice.lang.toLowerCase().startsWith("en"));
 
-  const explicitMale = englishVoices.find((voice) => {
-    const name = voice.name;
-    if (isFemaleVoice(name)) return false;
-    return (
-      /male/i.test(name) ||
-      /david/i.test(name) ||
-      /mark/i.test(name) ||
-      /guy/i.test(name) ||
-      /alex/i.test(name) ||
-      /fred/i.test(name) ||
-      /james/i.test(name) ||
-      /daniel/i.test(name) ||
-      /ryan/i.test(name) ||
-      /george/i.test(name) ||
-      /thomas/i.test(name) ||
-      /aaron/i.test(name) ||
-      /richard/i.test(name) ||
-      /paul/i.test(name) ||
-      /brian/i.test(name) ||
-      /roger/i.test(name)
-    );
-  });
-
-  if (explicitMale) return explicitMale;
-
-  const microsoftMale = englishVoices.find((voice) => {
-    const name = voice.name.toLowerCase();
-    return (
-      name.includes("microsoft") &&
-      !isFemaleVoice(voice.name) &&
-      !name.includes("google")
-    );
-  });
-
-  return microsoftMale;
+  return (
+    englishVoices.find((voice) => {
+      const name = voice.name;
+      if (isFemaleVoice(name)) return false;
+      return /male|david|mark|guy|alex|fred|james|daniel|ryan|george|thomas|aaron|richard|paul|brian|roger/i.test(
+        name
+      );
+    }) ??
+    englishVoices.find((voice) => {
+      const name = voice.name.toLowerCase();
+      return name.includes("microsoft") && !isFemaleVoice(voice.name) && !name.includes("google");
+    }) ??
+    englishVoices.find((voice) => !isFemaleVoice(voice.name))
+  );
 }
 
 export function useAvatarSpeech() {
@@ -96,7 +71,14 @@ export function useAvatarSpeech() {
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   const typewriterTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const maleVoiceRef = useRef<SpeechSynthesisVoice | null>(null);
+  const speakingTimeoutRef = useRef<number | null>(null);
+
+  const clearSpeakingTimeout = useCallback(() => {
+    if (speakingTimeoutRef.current) {
+      window.clearTimeout(speakingTimeoutRef.current);
+      speakingTimeoutRef.current = null;
+    }
+  }, []);
 
   const typewriteText = useCallback((text: string) => {
     if (typewriterTimerRef.current) clearInterval(typewriterTimerRef.current);
@@ -114,6 +96,7 @@ export function useAvatarSpeech() {
   }, []);
 
   const stopSpeech = useCallback(() => {
+    clearSpeakingTimeout();
     if (typeof window !== "undefined" && window.speechSynthesis) {
       window.speechSynthesis.cancel();
     }
@@ -122,43 +105,67 @@ export function useAvatarSpeech() {
       clearInterval(typewriterTimerRef.current);
       typewriterTimerRef.current = null;
     }
-  }, []);
+  }, [clearSpeakingTimeout]);
 
-  const speakWithMaleVoice = useCallback((text: string, voices: SpeechSynthesisVoice[]) => {
-    const synth = window.speechSynthesis;
-    const maleVoice = pickMaleVoice(voices) ?? maleVoiceRef.current;
+  const startSpeech = useCallback(
+    (text: string) => {
+      if (typeof window === "undefined" || !window.speechSynthesis) {
+        setSpeechText(text);
+        return;
+      }
 
-    if (!maleVoice) {
-      return false;
-    }
+      const synth = window.speechSynthesis;
+      const voices = synth.getVoices();
+      const maleVoice = pickMaleVoice(voices);
 
-    maleVoiceRef.current = maleVoice;
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 0.94;
+      utterance.pitch = 0.85;
+      utterance.lang = maleVoice?.lang ?? "en-US";
 
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.rate = 0.94;
-    utterance.pitch = 0.85;
-    utterance.lang = maleVoice.lang;
-    utterance.voice = maleVoice;
+      if (maleVoice) {
+        utterance.voice = maleVoice;
+      }
 
-    utterance.onstart = () => setIsSpeaking(true);
-    utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = () => setIsSpeaking(false);
+      utterance.onstart = () => {
+        setIsSpeaking(true);
+        clearSpeakingTimeout();
+        speakingTimeoutRef.current = window.setTimeout(() => {
+          setIsSpeaking(false);
+        }, Math.max(text.length * 70, 4000));
+      };
 
-    synth.cancel();
-    if (synth.paused) {
-      synth.resume();
-    }
-    synth.speak(utterance);
+      utterance.onend = () => {
+        clearSpeakingTimeout();
+        setIsSpeaking(false);
+      };
 
-    return true;
-  }, []);
+      utterance.onerror = () => {
+        clearSpeakingTimeout();
+        setIsSpeaking(false);
+      };
+
+      if (synth.paused) {
+        synth.resume();
+      }
+
+      synth.speak(utterance);
+    },
+    [clearSpeakingTimeout]
+  );
 
   const speakTopic = useCallback(
     (topic: AvatarTopic) => {
-      stopSpeech();
-      setCurrentTopic(topic);
       const text = AVATAR_TOPICS[topic];
 
+      if (typewriterTimerRef.current) clearInterval(typewriterTimerRef.current);
+      clearSpeakingTimeout();
+      if (typeof window !== "undefined" && window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+
+      setCurrentTopic(topic);
+      setIsSpeaking(false);
       typewriteText(text);
 
       if (typeof window === "undefined" || !window.speechSynthesis) {
@@ -167,42 +174,44 @@ export function useAvatarSpeech() {
       }
 
       const synth = window.speechSynthesis;
+      const beginSpeech = () => {
+        queueMicrotask(() => startSpeech(text));
+      };
+
       const voices = synth.getVoices();
 
-      if (speakWithMaleVoice(text, voices)) {
+      if (voices.length > 0) {
+        beginSpeech();
         return;
       }
 
       const onVoicesReady = () => {
-        const loadedVoices = synth.getVoices();
-        const maleVoice = pickMaleVoice(loadedVoices);
-
-        if (maleVoice) {
-          maleVoiceRef.current = maleVoice;
-          synth.removeEventListener("voiceschanged", onVoicesReady);
-          speakWithMaleVoice(text, loadedVoices);
-        }
+        synth.removeEventListener("voiceschanged", onVoicesReady);
+        beginSpeech();
       };
 
       synth.addEventListener("voiceschanged", onVoicesReady);
       synth.getVoices();
     },
-    [speakWithMaleVoice, stopSpeech, typewriteText]
+    [clearSpeakingTimeout, startSpeech, typewriteText]
   );
 
   useEffect(() => {
     if (typeof window === "undefined" || !window.speechSynthesis) return;
 
-    const cacheMaleVoice = () => {
-      const voices = window.speechSynthesis.getVoices();
-      maleVoiceRef.current = pickMaleVoice(voices) ?? maleVoiceRef.current;
+    const synth = window.speechSynthesis;
+    const primeVoices = () => {
+      synth.getVoices();
     };
 
-    cacheMaleVoice();
-    window.speechSynthesis.addEventListener("voiceschanged", cacheMaleVoice);
+    primeVoices();
+    synth.addEventListener("voiceschanged", primeVoices);
+
+    const timers = [100, 300, 600].map((delay) => window.setTimeout(primeVoices, delay));
 
     return () => {
-      window.speechSynthesis.removeEventListener("voiceschanged", cacheMaleVoice);
+      synth.removeEventListener("voiceschanged", primeVoices);
+      timers.forEach((timer) => window.clearTimeout(timer));
     };
   }, []);
 
