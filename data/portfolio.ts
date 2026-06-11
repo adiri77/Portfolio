@@ -203,7 +203,7 @@ export const projects = [
       "Grafana/SigNoz instrumentation for agent latency profiling and resource consumption benchmarking.",
     ],
     links: [
-      [{ label: "GitHub Profile", href: "https://github.com/adiri77", icon: "fab fa-github" }],
+      [{ label: "Source Code", href: "https://github.com/adiri77", icon: "fab fa-github" }],
     ] as ProjectLink[][],
   },
   {
@@ -218,7 +218,7 @@ export const projects = [
     ],
     links: [
       [{ label: "Live Demo", href: "https://modumentor-client.netlify.app/", icon: "fa-globe" }],
-      [{ label: "GitHub", href: "https://github.com/adiri77/ModuMentor", icon: "fab fa-github" }],
+      [{ label: "Source Code", href: "https://github.com/adiri77/ModuMentor", icon: "fab fa-github" }],
     ] as ProjectLink[][],
   },
   {
@@ -234,7 +234,7 @@ export const projects = [
     ],
     links: [
       [{ label: "Live Demo", href: "https://neurohrai.netlify.app/", icon: "fa-globe" }],
-      [{ label: "GitHub", href: "https://github.com/adiri77/NeuroHr", icon: "fab fa-github" }],
+      [{ label: "Source Code", href: "https://github.com/adiri77/NeuroHr", icon: "fab fa-github" }],
     ] as ProjectLink[][],
   },
   {
@@ -249,7 +249,7 @@ export const projects = [
     ],
     links: [
       [{ label: "Live Demo", href: "https://tech-task-management-fe.vercel.app/", icon: "fa-globe" }],
-      [{ label: "GitHub", href: "https://github.com/adiri77/TechTask", icon: "fab fa-github" }],
+      [{ label: "Source Code", href: "https://github.com/adiri77/TechTask", icon: "fab fa-github" }],
     ] as ProjectLink[][],
   },
   {
