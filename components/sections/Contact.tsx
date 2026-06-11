@@ -11,14 +11,12 @@ export default function Contact() {
     <FadeInSection id="contact">
       <SectionTitle>Let&apos;s Connect</SectionTitle>
       <motion.div
-        className="contact-content rounded-2xl p-6 text-center sm:p-7 md:p-8"
+        className="contact-content rounded-3xl p-6 text-center sm:p-8 md:p-10"
         whileHover={{ y: -4 }}
         transition={{ type: "spring", stiffness: 220, damping: 18 }}
       >
-        <h3 className="contact-heading text-xl font-bold text-indigo-dark sm:text-2xl">
-          Ready to collaborate on exciting projects?
-        </h3>
-        <p className="contact-subtext mx-auto mt-3 max-w-2xl text-center text-sm text-text-secondary sm:text-base">
+        <h3 className="contact-heading text-xl font-bold sm:text-2xl">Ready to collaborate on exciting projects?</h3>
+        <p className="contact-subtext mx-auto mt-3 max-w-2xl text-center text-sm sm:text-base">
           I&apos;m always open to discussing new opportunities, innovative ideas, and potential collaborations.
         </p>
         <div className="contact-links mt-8 flex flex-wrap items-center justify-center gap-3 pb-1 sm:gap-4">

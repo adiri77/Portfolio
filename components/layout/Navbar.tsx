@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { navLinks } from "@/data/portfolio";
 
+const MOBILE_NAV_BREAKPOINT = 1280;
+
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -22,7 +24,7 @@ export default function Navbar() {
     };
 
     const onResize = () => {
-      if (window.innerWidth > 768) setMobileOpen(false);
+      if (window.innerWidth >= MOBILE_NAV_BREAKPOINT) setMobileOpen(false);
     };
 
     window.addEventListener("scroll", onScroll);
@@ -34,7 +36,25 @@ export default function Navbar() {
     };
   }, []);
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
+  const scrollToTop = () => {
+    setMobileOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
@@ -43,9 +63,18 @@ export default function Navbar() {
 
   return (
     <nav className="fixed inset-x-0 top-0 z-50">
-      <div className="nav-container relative mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+      {mobileOpen ? (
+        <button
+          type="button"
+          className="nav-backdrop"
+          aria-label="Close menu"
+          onClick={() => setMobileOpen(false)}
+        />
+      ) : null}
+
+      <div className="nav-container relative mx-auto flex w-full max-w-7xl flex-nowrap items-center justify-between gap-3 px-4 py-3 sm:px-6 md:px-8 lg:px-10 xl:px-12">
         <div
-          className="logo"
+          className="logo shrink-0"
           onClick={scrollToTop}
           role="button"
           tabIndex={0}
@@ -54,14 +83,17 @@ export default function Navbar() {
           <span>A</span>
           <span>S</span>
         </div>
+
         <button
-          className="mobile-menu-btn"
+          className="mobile-menu-btn ml-auto shrink-0"
           type="button"
-          aria-label="Toggle menu"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((o) => !o)}
         >
           <i className={`fas ${mobileOpen ? "fa-times" : "fa-bars"}`} />
         </button>
+
         <ul className={`nav-links${mobileOpen ? " mobile-open" : ""}`}>
           {navLinks.map((link) => (
             <li key={link.href}>
@@ -74,7 +106,7 @@ export default function Navbar() {
                 }}
               >
                 <i className={`fas ${link.icon}`} />
-                {link.label}
+                <span className="nav-link-label">{link.label}</span>
               </a>
             </li>
           ))}

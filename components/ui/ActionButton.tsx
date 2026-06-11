@@ -16,12 +16,13 @@ type ActionButtonBaseProps = {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "border-transparent bg-gradient-to-r from-indigo-dark to-indigo text-white shadow-[0_8px_24px_rgba(79,70,229,0.25)] hover:from-[#312e81] hover:to-indigo-dark disabled:opacity-60",
+    "border-transparent bg-gradient-to-r from-aqua-dark to-aqua text-white shadow-[0_8px_24px_rgba(0,119,182,0.25)] hover:from-[#023e8a] hover:to-aqua-dark disabled:opacity-60",
   secondary:
-    "border-indigo/30 bg-cream text-indigo-dark shadow-[0_4px_16px_rgba(79,70,229,0.08)] hover:border-indigo hover:bg-cream-warm",
-  ghost: "border-transparent bg-transparent text-indigo-dark hover:bg-indigo/10",
+    "border-aqua/30 bg-cream text-aqua-dark shadow-[0_4px_16px_rgba(0,119,182,0.08)] hover:border-aqua hover:bg-cream-warm",
+  ghost:
+    "border-transparent bg-transparent text-aqua-dark hover:bg-aqua/10",
   chip:
-    "border-indigo/25 bg-cream text-text-secondary hover:border-indigo/45 hover:bg-indigo/10 hover:text-indigo-dark data-[active=true]:border-indigo data-[active=true]:bg-indigo/15 data-[active=true]:text-indigo-dark",
+    "border-aqua/25 bg-cream text-text-secondary hover:border-aqua/45 hover:bg-aqua/10 hover:text-aqua-dark data-[active=true]:border-aqua data-[active=true]:bg-aqua/15 data-[active=true]:text-aqua-dark",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
@@ -52,7 +53,7 @@ function baseClassName(variant: ButtonVariant, size: ButtonSize, className: stri
     `action-btn inline-flex shrink-0 items-center justify-center ${shape} border font-semibold`,
     "box-border transition-colors duration-200",
     variant === "chip" ? "text-center" : "whitespace-nowrap",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo/50 focus-visible:ring-offset-2",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aqua/50 focus-visible:ring-offset-2",
     variantStyles[variant],
     sizeStyles[size],
     className,
@@ -69,6 +70,12 @@ function ButtonContent({ icon, children }: { icon?: string; children: React.Reac
     </span>
   );
 }
+
+const chipMotionProps = {
+  whileHover: { scale: 1.02 },
+  whileTap: { scale: 0.98 },
+  transition: { type: "spring" as const, stiffness: 400, damping: 22 },
+};
 
 export function ActionButton({
   variant = "primary",

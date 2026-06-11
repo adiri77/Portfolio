@@ -7,7 +7,7 @@ import { ActionLink } from "@/components/ui/ActionButton";
 const PortfolioSpeaker = dynamic(() => import("@/components/avatar/PortfolioSpeaker"), {
   ssr: false,
   loading: () => (
-    <div className="h-80 w-full animate-pulse rounded-3xl border border-indigo/20 bg-cream-deep/60 sm:h-96" />
+    <div className="h-80 w-full animate-pulse rounded-3xl border border-aqua/20 bg-cream-deep/60 sm:h-96" />
   ),
 });
 
@@ -28,7 +28,7 @@ export default function Hero() {
     >
       <div className="hero-layout flex w-full flex-col items-center justify-center gap-7 text-center sm:gap-8 md:gap-10">
         <motion.div
-          className="hero-badge inline-flex items-center gap-2 rounded-full border border-indigo/30 bg-indigo/10 px-4 py-2 text-sm font-semibold text-indigo-dark"
+          className="hero-badge inline-flex items-center gap-2 rounded-full border border-aqua/30 bg-aqua/10 px-4 py-2 text-sm font-semibold text-aqua-dark"
           initial="hidden"
           animate="show"
           variants={heroItem(0.15)}
@@ -38,7 +38,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.h1
-          className="w-full bg-gradient-to-r from-indigo-dark via-indigo to-[#312e81] bg-clip-text px-2 text-4xl font-extrabold leading-tight text-transparent sm:text-5xl lg:text-[3.2rem]"
+          className="w-full bg-gradient-to-r from-aqua-dark via-aqua to-[#023e8a] bg-clip-text px-2 text-4xl font-extrabold leading-tight text-transparent sm:text-5xl lg:text-[3.2rem]"
           initial="hidden"
           animate="show"
           variants={heroItem(0.27)}
@@ -52,7 +52,7 @@ export default function Hero() {
           animate="show"
           variants={heroItem(0.39)}
         >
-          SDE — Agentic AI Systems · LLM Orchestration · Distributed Backend Architecture
+          Software Development Engineer | Agentic AI &amp; LLM Orchestration | Distributed Backend Systems
         </motion.p>
 
         <motion.div
