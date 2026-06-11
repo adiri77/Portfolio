@@ -35,32 +35,8 @@ const FEMALE_VOICE_HINTS = [
   "kimberly",
   "ivy",
   "salli",
-  "raveena",
-  "aditi",
   "amy",
   "nicole",
-];
-
-const MALE_VOICE_PRIORITY: Array<{ pattern: RegExp; score: number }> = [
-  { pattern: /\bdavid\b/i, score: 1000 },
-  { pattern: /\bmark\b/i, score: 950 },
-  { pattern: /\bguy\b/i, score: 900 },
-  { pattern: /\bmale\b/i, score: 850 },
-  { pattern: /\bjames\b/i, score: 800 },
-  { pattern: /\bdaniel\b/i, score: 780 },
-  { pattern: /\bryan\b/i, score: 760 },
-  { pattern: /\bgeorge\b/i, score: 740 },
-  { pattern: /\bthomas\b/i, score: 720 },
-  { pattern: /\baaron\b/i, score: 700 },
-  { pattern: /\bfred\b/i, score: 680 },
-  { pattern: /\brichard\b/i, score: 660 },
-  { pattern: /\bpaul\b/i, score: 640 },
-  { pattern: /\bbrian\b/i, score: 620 },
-  { pattern: /\beric\b/i, score: 600 },
-  { pattern: /\broger\b/i, score: 580 },
-  { pattern: /\bchristopher\b/i, score: 560 },
-  { pattern: /\bsteffan\b/i, score: 540 },
-  { pattern: /\bsteven\b/i, score: 520 },
 ];
 
 function isFemaleVoice(name: string): boolean {
@@ -68,78 +44,48 @@ function isFemaleVoice(name: string): boolean {
   return FEMALE_VOICE_HINTS.some((hint) => normalized.includes(hint));
 }
 
-function isExplicitlyMaleVoice(voice: SpeechSynthesisVoice): boolean {
-  const name = voice.name;
-  const lang = voice.lang.toLowerCase();
-
-  if (!lang.startsWith("en") || isFemaleVoice(name)) {
-    return false;
-  }
-
-  if (/google/i.test(name) && !/\bmale\b/i.test(name)) {
-    return false;
-  }
-
-  return MALE_VOICE_PRIORITY.some(({ pattern }) => pattern.test(name));
-}
-
-function scoreMaleVoice(voice: SpeechSynthesisVoice): number {
-  if (!isExplicitlyMaleVoice(voice)) {
-    return Number.NEGATIVE_INFINITY;
-  }
-
-  let score = 0;
-
-  for (const { pattern, score: points } of MALE_VOICE_PRIORITY) {
-    if (pattern.test(voice.name)) {
-      score = Math.max(score, points);
-    }
-  }
-
-  const lang = voice.lang.toLowerCase();
-  if (lang.startsWith("en-us")) score += 40;
-  if (voice.localService) score += 20;
-
-  return score;
+function isEnglishVoice(voice: SpeechSynthesisVoice): boolean {
+  return voice.lang.toLowerCase().startsWith("en");
 }
 
 function pickMaleVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | undefined {
-  const ranked = voices
-    .map((voice) => ({ voice, score: scoreMaleVoice(voice) }))
-    .filter(({ score }) => Number.isFinite(score))
-    .sort((a, b) => b.score - a.score);
+  const englishVoices = voices.filter(isEnglishVoice);
 
-  return ranked[0]?.voice;
-}
-
-function waitForVoices(timeoutMs = 1200): Promise<SpeechSynthesisVoice[]> {
-  return new Promise((resolve) => {
-    const synth = window.speechSynthesis;
-    const resolveIfReady = () => {
-      const voices = synth.getVoices();
-      if (pickMaleVoice(voices)) {
-        resolve(voices);
-        return true;
-      }
-      return false;
-    };
-
-    if (resolveIfReady()) return;
-
-    const onVoicesChanged = () => {
-      if (resolveIfReady()) {
-        synth.removeEventListener("voiceschanged", onVoicesChanged);
-      }
-    };
-
-    synth.addEventListener("voiceschanged", onVoicesChanged);
-    synth.getVoices();
-
-    window.setTimeout(() => {
-      synth.removeEventListener("voiceschanged", onVoicesChanged);
-      resolve(synth.getVoices());
-    }, timeoutMs);
+  const explicitMale = englishVoices.find((voice) => {
+    const name = voice.name;
+    if (isFemaleVoice(name)) return false;
+    return (
+      /male/i.test(name) ||
+      /david/i.test(name) ||
+      /mark/i.test(name) ||
+      /guy/i.test(name) ||
+      /alex/i.test(name) ||
+      /fred/i.test(name) ||
+      /james/i.test(name) ||
+      /daniel/i.test(name) ||
+      /ryan/i.test(name) ||
+      /george/i.test(name) ||
+      /thomas/i.test(name) ||
+      /aaron/i.test(name) ||
+      /richard/i.test(name) ||
+      /paul/i.test(name) ||
+      /brian/i.test(name) ||
+      /roger/i.test(name)
+    );
   });
+
+  if (explicitMale) return explicitMale;
+
+  const microsoftMale = englishVoices.find((voice) => {
+    const name = voice.name.toLowerCase();
+    return (
+      name.includes("microsoft") &&
+      !isFemaleVoice(voice.name) &&
+      !name.includes("google")
+    );
+  });
+
+  return microsoftMale;
 }
 
 export function useAvatarSpeech() {
@@ -150,7 +96,7 @@ export function useAvatarSpeech() {
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   const typewriterTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const speakRequestRef = useRef(0);
+  const maleVoiceRef = useRef<SpeechSynthesisVoice | null>(null);
 
   const typewriteText = useCallback((text: string) => {
     if (typewriterTimerRef.current) clearInterval(typewriterTimerRef.current);
@@ -168,7 +114,6 @@ export function useAvatarSpeech() {
   }, []);
 
   const stopSpeech = useCallback(() => {
-    speakRequestRef.current += 1;
     if (typeof window !== "undefined" && window.speechSynthesis) {
       window.speechSynthesis.cancel();
     }
@@ -179,12 +124,40 @@ export function useAvatarSpeech() {
     }
   }, []);
 
+  const speakWithMaleVoice = useCallback((text: string, voices: SpeechSynthesisVoice[]) => {
+    const synth = window.speechSynthesis;
+    const maleVoice = pickMaleVoice(voices) ?? maleVoiceRef.current;
+
+    if (!maleVoice) {
+      return false;
+    }
+
+    maleVoiceRef.current = maleVoice;
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 0.94;
+    utterance.pitch = 0.85;
+    utterance.lang = maleVoice.lang;
+    utterance.voice = maleVoice;
+
+    utterance.onstart = () => setIsSpeaking(true);
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+
+    synth.cancel();
+    if (synth.paused) {
+      synth.resume();
+    }
+    synth.speak(utterance);
+
+    return true;
+  }, []);
+
   const speakTopic = useCallback(
     (topic: AvatarTopic) => {
       stopSpeech();
       setCurrentTopic(topic);
       const text = AVATAR_TOPICS[topic];
-      const requestId = speakRequestRef.current;
 
       typewriteText(text);
 
@@ -193,34 +166,44 @@ export function useAvatarSpeech() {
         return;
       }
 
-      void waitForVoices().then((voices) => {
-        if (requestId !== speakRequestRef.current) return;
+      const synth = window.speechSynthesis;
+      const voices = synth.getVoices();
 
-        const maleVoice = pickMaleVoice(voices);
-        if (!maleVoice) {
-          return;
+      if (speakWithMaleVoice(text, voices)) {
+        return;
+      }
+
+      const onVoicesReady = () => {
+        const loadedVoices = synth.getVoices();
+        const maleVoice = pickMaleVoice(loadedVoices);
+
+        if (maleVoice) {
+          maleVoiceRef.current = maleVoice;
+          synth.removeEventListener("voiceschanged", onVoicesReady);
+          speakWithMaleVoice(text, loadedVoices);
         }
+      };
 
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.rate = 0.92;
-        utterance.pitch = 0.8;
-        utterance.lang = maleVoice.lang;
-        utterance.voice = maleVoice;
-
-        utterance.onstart = () => setIsSpeaking(true);
-        utterance.onend = () => setIsSpeaking(false);
-        utterance.onerror = () => setIsSpeaking(false);
-
-        window.speechSynthesis.cancel();
-        window.speechSynthesis.speak(utterance);
-      });
+      synth.addEventListener("voiceschanged", onVoicesReady);
+      synth.getVoices();
     },
-    [stopSpeech, typewriteText]
+    [speakWithMaleVoice, stopSpeech, typewriteText]
   );
 
   useEffect(() => {
     if (typeof window === "undefined" || !window.speechSynthesis) return;
-    void waitForVoices();
+
+    const cacheMaleVoice = () => {
+      const voices = window.speechSynthesis.getVoices();
+      maleVoiceRef.current = pickMaleVoice(voices) ?? maleVoiceRef.current;
+    };
+
+    cacheMaleVoice();
+    window.speechSynthesis.addEventListener("voiceschanged", cacheMaleVoice);
+
+    return () => {
+      window.speechSynthesis.removeEventListener("voiceschanged", cacheMaleVoice);
+    };
   }, []);
 
   useEffect(() => () => stopSpeech(), [stopSpeech]);
