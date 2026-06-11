@@ -218,11 +218,7 @@ export const projects = [
     ],
     links: [
       [{ label: "Live Demo", href: "https://modumentor-client.netlify.app/", icon: "fa-globe" }],
-      [
-        { label: "Frontend", href: "https://github.com/VaishaleeSingh/ModuMentorClient", icon: "fab fa-github" },
-        { label: "Agent", href: "https://github.com/VaishaleeSingh/ModumentorAgent-", icon: "fab fa-github" },
-        { label: "Backend", href: "https://github.com/VaishaleeSingh/ModuMentorServer", icon: "fab fa-github" },
-      ],
+      [{ label: "GitHub", href: "https://github.com/adiri77/ModuMentor", icon: "fab fa-github" }],
     ] as ProjectLink[][],
   },
   {
@@ -238,7 +234,7 @@ export const projects = [
     ],
     links: [
       [{ label: "Live Demo", href: "https://neurohrai.netlify.app/", icon: "fa-globe" }],
-      [{ label: "GitHub", href: "https://github.com/VaishaleeSingh/NeuroHr", icon: "fab fa-github" }],
+      [{ label: "GitHub", href: "https://github.com/adiri77/NeuroHr", icon: "fab fa-github" }],
     ] as ProjectLink[][],
   },
   {
@@ -253,10 +249,7 @@ export const projects = [
     ],
     links: [
       [{ label: "Live Demo", href: "https://tech-task-management-fe.vercel.app/", icon: "fa-globe" }],
-      [
-        { label: "Frontend", href: "https://github.com/VaishaleeSingh/tech_task_management_fe", icon: "fab fa-github" },
-        { label: "Backend", href: "https://github.com/VaishaleeSingh/tech_task_management_be", icon: "fab fa-github" },
-      ],
+      [{ label: "GitHub", href: "https://github.com/adiri77/TechTask", icon: "fab fa-github" }],
     ] as ProjectLink[][],
   },
   {
@@ -383,7 +376,7 @@ export const contactLinks = [
   },
   { href: "tel:+919026201633", icon: "fa-phone", label: "+91-9026201633" },
   {
-    href: "https://www.linkedin.com/in/aditya-kumar-singh",
+    href: "https://www.linkedin.com/in/aditya-kumar-singh-4a9379208",
     icon: "fab fa-linkedin",
     label: "LinkedIn",
   },
