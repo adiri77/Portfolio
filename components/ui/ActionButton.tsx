@@ -22,7 +22,7 @@ const variantStyles: Record<ButtonVariant, string> = {
   ghost:
     "border-transparent bg-transparent text-aqua-dark hover:bg-aqua/10",
   chip:
-    "border-aqua/25 bg-cream text-text-secondary hover:border-aqua/45 hover:bg-aqua/10 hover:text-aqua-dark data-[active=true]:border-aqua data-[active=true]:bg-aqua/15 data-[active=true]:text-aqua-dark",
+    "border-transparent bg-aqua/8 text-text-secondary hover:bg-aqua/15 hover:text-aqua-light data-[active=true]:bg-aqua/20 data-[active=true]:text-aqua-dark data-[active=true]:shadow-[inset_0_0_0_1px_rgba(232,184,91,0.5)]",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
