@@ -38,7 +38,7 @@ function pickMaleVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | u
 export function useAvatarSpeech() {
   const [currentTopic, setCurrentTopic] = useState<AvatarTopic>("intro");
   const [speechText, setSpeechText] = useState(
-    'Hi! I\'m Aditya. Click "Listen" and I\'ll walk you through my expertise, experience, and projects.'
+    "Hi! I'm Aditya. Pick a topic above and press play — I'll walk you through my expertise, experience, and projects."
   );
   const [isSpeaking, setIsSpeaking] = useState(false);
 

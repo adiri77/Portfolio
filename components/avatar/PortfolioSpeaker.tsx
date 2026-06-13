@@ -85,38 +85,11 @@ export default function PortfolioSpeaker() {
         </div>
 
         <div className="flex w-full min-w-0 max-w-xl flex-col items-center gap-4 lg:max-w-lg">
-          <div className="flex w-full flex-col items-center gap-3">
-            <div className="min-w-0">
-              <h2 className="text-lg font-bold text-aqua-dark sm:text-xl">Hear my story</h2>
-              <p className="mt-0.5 text-sm text-text-secondary">
-                Tap a topic or press play — I&apos;ll narrate my portfolio for you.
-              </p>
-            </div>
-
-            <div className="flex shrink-0 items-center justify-center gap-2 rounded-full border border-aqua/20 bg-cream/80 px-3 py-1.5">
-              <motion.span
-                className={`inline-flex h-2 w-2 shrink-0 rounded-full ${isSpeaking ? "bg-aqua" : "bg-aqua/40"}`}
-                animate={isSpeaking ? { scale: [1, 1.4, 1] } : {}}
-                transition={{ duration: 0.9, repeat: isSpeaking ? Infinity : 0 }}
-              />
-              <span className="text-xs font-semibold text-aqua-dark">
-                {isSpeaking ? "Speaking" : "Ready"}
-              </span>
-            </div>
-          </div>
-
-          <div className="speaker-controls flex flex-wrap items-center justify-center gap-3">
-            <ActionButton
-              variant="primary"
-              size="md"
-              icon="fas fa-play"
-              onClick={() => speakTopic(currentTopic)}
-            >
-              Listen
-            </ActionButton>
-            <ActionButton variant="secondary" size="md" icon="fas fa-stop" onClick={stopSpeech}>
-              Stop
-            </ActionButton>
+          <div className="min-w-0 text-center">
+            <h2 className="text-lg font-bold text-aqua-dark sm:text-xl">Hear my story</h2>
+            <p className="mt-0.5 text-sm text-text-secondary">
+              Tap a topic and I&apos;ll narrate that part of my story.
+            </p>
           </div>
 
           <div className="speaker-topic-tabs grid w-full grid-cols-2 gap-3 xl:grid-cols-4">
@@ -137,18 +110,34 @@ export default function PortfolioSpeaker() {
 
           <div className="speaker-transcript relative w-full min-h-[8rem] text-left sm:min-h-[9rem]">
             <div className="speaker-transcript-header flex items-center justify-between gap-3 border-b border-aqua/10">
-              <span className="text-xs font-semibold uppercase tracking-wide text-aqua-dark">
-                {activeLabel}
-              </span>
-              {isSpeaking && (
+              <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-aqua-dark">
                 <motion.span
-                  className="text-[0.65rem] font-medium text-aqua"
-                  animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 1.2, repeat: Infinity }}
-                >
-                  Live
-                </motion.span>
-              )}
+                  className={`inline-flex h-1.5 w-1.5 shrink-0 rounded-full ${isSpeaking ? "bg-aqua" : "bg-aqua/40"}`}
+                  animate={isSpeaking ? { scale: [1, 1.5, 1], opacity: [0.6, 1, 0.6] } : {}}
+                  transition={{ duration: 1, repeat: isSpeaking ? Infinity : 0 }}
+                />
+                {activeLabel}
+                {isSpeaking && (
+                  <motion.span
+                    className="text-[0.6rem] font-medium tracking-wider text-aqua"
+                    animate={{ opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 1.2, repeat: Infinity }}
+                  >
+                    LIVE
+                  </motion.span>
+                )}
+              </span>
+
+              <button
+                type="button"
+                onClick={() => (isSpeaking ? stopSpeech() : speakTopic(currentTopic))}
+                aria-label={isSpeaking ? "Stop narration" : "Play narration"}
+                title={isSpeaking ? "Stop" : "Play"}
+                className="speaker-play-toggle"
+              >
+                {isSpeaking && <span className="speaker-play-ring" aria-hidden />}
+                <i className={`fas ${isSpeaking ? "fa-stop" : "fa-play"}`} aria-hidden />
+              </button>
             </div>
 
             <p className="speaker-transcript-body text-sm leading-relaxed text-text-primary sm:text-[0.95rem]">
