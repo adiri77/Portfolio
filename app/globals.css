@@ -2379,20 +2379,20 @@ position: relative;
 display: inline-flex;
 align-items: center;
 justify-content: center;
-width: 2.35rem;
-height: 2.35rem;
+width: 1.85rem;
+height: 1.85rem;
 flex-shrink: 0;
 border: none;
 border-radius: 9999px;
 cursor: pointer;
 color: #2a1208;
 background: linear-gradient(135deg, #f3d490, #df9a3d);
-box-shadow: 0 6px 18px rgba(223, 154, 61, 0.4);
+box-shadow: 0 4px 12px rgba(223, 154, 61, 0.35);
 transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .speaker-play-toggle i {
-font-size: 0.82rem;
+font-size: 0.68rem;
 line-height: 1;
 }
 
@@ -2416,9 +2416,9 @@ outline-offset: 3px;
 
 .speaker-play-ring {
 position: absolute;
-inset: -4px;
+inset: -3px;
 border-radius: 9999px;
-border: 2px solid rgba(232, 184, 91, 0.6);
+border: 1.5px solid rgba(232, 184, 91, 0.6);
 animation: playPulse 1.5s ease-out infinite;
 pointer-events: none;
 }
