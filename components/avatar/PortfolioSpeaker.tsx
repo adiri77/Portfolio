@@ -27,13 +27,13 @@ export default function PortfolioSpeaker() {
       <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-aqua/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-20 -left-12 h-40 w-40 rounded-full bg-aqua-light/20 blur-3xl" />
 
-      <div className="speaker-panel-inner relative flex flex-col items-center gap-5 text-center sm:gap-6 lg:flex-row lg:items-start lg:justify-center lg:gap-8">
-        <div className="flex w-full max-w-[11rem] shrink-0 flex-col items-center gap-3">
+      <div className="speaker-panel-inner relative flex flex-col items-center gap-5 text-center sm:gap-6 lg:flex-row lg:items-center lg:justify-center lg:gap-8">
+        <div className="flex w-full max-w-[13rem] shrink-0 flex-col items-center gap-3 lg:max-w-[15.5rem] lg:self-stretch">
           <motion.div
-            className={`speaker-portrait relative mx-auto aspect-[4/5] w-full overflow-hidden rounded-2xl border-4 bg-cream shadow-lg ${
-              isSpeaking ? "border-aqua shadow-[0_0_28px_rgba(226,88,34,0.45)]" : "border-aqua/30"
+            className={`speaker-portrait relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] shadow-[0_18px_50px_rgba(0,0,0,0.45)] ring-1 lg:aspect-auto lg:h-full lg:min-h-[22rem] ${
+              isSpeaking ? "ring-aqua/70 shadow-[0_0_44px_rgba(226,88,34,0.4)]" : "ring-aqua/30"
             }`}
-            animate={isSpeaking ? { scale: [1, 1.02, 1] } : { scale: 1 }}
+            animate={isSpeaking ? { scale: [1, 1.015, 1] } : { scale: 1 }}
             transition={{ duration: 1.2, repeat: isSpeaking ? Infinity : 0, ease: "easeInOut" }}
           >
             <Image
@@ -41,24 +41,25 @@ export default function PortfolioSpeaker() {
               src="/Aditya.jpeg"
               fill
               priority
-              sizes="(max-width: 768px) 176px, 200px"
-              className="object-cover object-[50%_22%]"
+              sizes="(max-width: 768px) 208px, 248px"
+              className="object-cover object-[50%_16%]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-aqua-dark/25 via-transparent to-transparent" />
+            <div className="pointer-events-none absolute inset-0 rounded-[1.75rem] ring-1 ring-inset ring-white/10" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-[#160a07] via-[#160a07]/72 to-transparent" />
 
             <AnimatePresence>
               {isSpeaking && (
                 <motion.div
-                  className="absolute inset-x-0 bottom-0 flex items-end justify-center gap-1 bg-gradient-to-t from-aqua-dark/50 to-transparent px-3 pb-3 pt-8"
-                  initial={{ opacity: 0, y: 8 }}
+                  className="absolute left-1/2 top-3 flex -translate-x-1/2 items-end gap-1 rounded-full bg-black/40 px-2.5 py-1.5 backdrop-blur-sm"
+                  initial={{ opacity: 0, y: -6 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 8 }}
+                  exit={{ opacity: 0, y: -6 }}
                 >
                   {[0.45, 0.75, 1, 0.65, 0.5].map((scale, index) => (
                     <motion.span
                       key={index}
-                      className="w-1 rounded-full bg-white/90"
-                      style={{ height: 14 }}
+                      className="w-1 rounded-full bg-aqua-light"
+                      style={{ height: 12 }}
                       animate={{ scaleY: [0.35, scale, 0.35] }}
                       transition={{
                         duration: 0.55,
@@ -71,12 +72,16 @@ export default function PortfolioSpeaker() {
                 </motion.div>
               )}
             </AnimatePresence>
-          </motion.div>
 
-          <div>
-            <p className="text-sm font-bold text-aqua-dark">Aditya Singh</p>
-            <p className="text-xs text-text-secondary">Software Development Engineer</p>
-          </div>
+            <div className="absolute inset-x-0 bottom-0 p-4 text-center">
+              <p className="font-display text-lg font-bold leading-tight text-aqua-light drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)]">
+                Aditya Singh
+              </p>
+              <p className="mt-1 text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-text-secondary drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]">
+                Software Development Engineer
+              </p>
+            </div>
+          </motion.div>
         </div>
 
         <div className="flex w-full min-w-0 max-w-xl flex-col items-center gap-4 lg:max-w-lg">
@@ -130,7 +135,7 @@ export default function PortfolioSpeaker() {
             ))}
           </div>
 
-          <div className="speaker-transcript relative w-full min-h-[8rem] rounded-2xl border border-aqua/20 bg-cream/90 text-left shadow-inner sm:min-h-[9rem]">
+          <div className="speaker-transcript relative w-full min-h-[8rem] border-l-2 border-aqua/25 text-left sm:min-h-[9rem]">
             <div className="speaker-transcript-header flex items-center justify-between gap-3 border-b border-aqua/10">
               <span className="text-xs font-semibold uppercase tracking-wide text-aqua-dark">
                 {activeLabel}
