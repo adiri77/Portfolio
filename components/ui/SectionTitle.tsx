@@ -4,18 +4,23 @@ import { motion } from "framer-motion";
 
 type SectionTitleProps = {
   children: React.ReactNode;
+  number?: string;
 };
 
-export default function SectionTitle({ children }: SectionTitleProps) {
+export default function SectionTitle({ children, number }: SectionTitleProps) {
   return (
-    <motion.h2
-      className="section-title mb-6 text-center text-3xl font-bold text-aqua-dark sm:mb-8 sm:text-4xl md:mb-10"
+    <motion.div
+      className="section-heading mb-8 flex items-center gap-4 sm:mb-10 md:mb-12"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.55, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
     >
-      {children}
-    </motion.h2>
+      <h2 className="section-title flex min-w-0 items-baseline gap-3">
+        {number ? <span className="section-number">{number}.</span> : null}
+        <span className="section-title-text">{children}</span>
+      </h2>
+      <span className="section-rule" aria-hidden="true" />
+    </motion.div>
   );
 }

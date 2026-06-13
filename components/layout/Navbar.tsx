@@ -58,7 +58,10 @@ export default function Navbar() {
 
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const el = document.querySelector(href);
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - 76;
+    window.scrollTo({ top, behavior: "smooth" });
   };
 
   return (
@@ -110,7 +113,29 @@ export default function Navbar() {
               </a>
             </li>
           ))}
+          <li className="nav-resume-item">
+            <a
+              className="nav-resume"
+              href="/Aditya_Singh_Resume.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileOpen(false)}
+            >
+              <i className="fas fa-file-arrow-down" />
+              <span className="nav-link-label">Resume</span>
+            </a>
+          </li>
         </ul>
+
+        <a
+          className="nav-resume nav-resume-desktop shrink-0"
+          href="/Aditya_Singh_Resume.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i className="fas fa-file-arrow-down" />
+          <span>Resume</span>
+        </a>
       </div>
     </nav>
   );

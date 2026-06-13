@@ -6,7 +6,7 @@ import { skillCategories } from "@/data/portfolio";
 export default function Skills() {
   return (
     <FadeInSection id="skills">
-      <SectionTitle>Technical Skills</SectionTitle>
+      <SectionTitle number="05">Technical Skills</SectionTitle>
       <MotionGrid className="skills-grid grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
         {skillCategories.map((category) => (
           <MotionGridItem key={category.title}>

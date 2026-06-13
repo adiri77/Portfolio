@@ -8,7 +8,7 @@ import { certifications } from "@/data/portfolio";
 export default function Certifications() {
   return (
     <FadeInSection id="certifications">
-      <SectionTitle>Certifications &amp; Awards</SectionTitle>
+      <SectionTitle number="03">Certifications &amp; Awards</SectionTitle>
       <MotionGrid className="projects-grid grid-certifications grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
         {certifications.map((cert) => (
           <MotionGridItem key={cert.title} className="h-full">
