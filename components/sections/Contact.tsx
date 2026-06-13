@@ -9,7 +9,7 @@ import { contactLinks } from "@/data/portfolio";
 export default function Contact() {
   return (
     <FadeInSection id="contact">
-      <SectionTitle>Let&apos;s Connect</SectionTitle>
+      <SectionTitle number="09">Let&apos;s Connect</SectionTitle>
       <motion.div
         className="contact-content rounded-3xl p-6 text-center sm:p-8 md:p-10"
         whileHover={{ y: -4 }}

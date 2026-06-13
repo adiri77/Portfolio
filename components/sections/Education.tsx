@@ -7,7 +7,7 @@ import { education } from "@/data/portfolio";
 export default function Education() {
   return (
     <FadeInSection id="education">
-      <SectionTitle>Education</SectionTitle>
+      <SectionTitle number="02">Education</SectionTitle>
       <MotionGrid className="projects-grid grid-education grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
         {education.map((item) => (
           <MotionGridItem key={item.title}>

@@ -19,7 +19,7 @@ export default function PortfolioSpeaker() {
 
   return (
     <motion.div
-      className="speaker-panel relative mx-auto w-full overflow-hidden rounded-3xl border border-aqua/25 bg-gradient-to-br from-cream via-cream-warm to-aqua-pale/40 shadow-[0_16px_48px_rgba(0,119,182,0.14)]"
+      className="speaker-panel relative mx-auto w-full overflow-hidden rounded-3xl border border-aqua/25 bg-gradient-to-br from-cream via-cream-warm to-aqua-pale/40 shadow-[0_16px_48px_rgba(0,0,0,0.35)]"
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
@@ -31,7 +31,7 @@ export default function PortfolioSpeaker() {
         <div className="flex w-full max-w-[11rem] shrink-0 flex-col items-center gap-3">
           <motion.div
             className={`speaker-portrait relative mx-auto aspect-[4/5] w-full overflow-hidden rounded-2xl border-4 bg-cream shadow-lg ${
-              isSpeaking ? "border-aqua shadow-[0_0_28px_rgba(0,180,216,0.35)]" : "border-aqua/30"
+              isSpeaking ? "border-aqua shadow-[0_0_28px_rgba(226,88,34,0.45)]" : "border-aqua/30"
             }`}
             animate={isSpeaking ? { scale: [1, 1.02, 1] } : { scale: 1 }}
             transition={{ duration: 1.2, repeat: isSpeaking ? Infinity : 0, ease: "easeInOut" }}

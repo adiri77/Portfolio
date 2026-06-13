@@ -9,7 +9,7 @@ import { aboutParagraphs } from "@/data/portfolio";
 export default function About() {
   return (
     <FadeInSection id="about">
-      <SectionTitle>About Me</SectionTitle>
+      <SectionTitle number="01">About Me</SectionTitle>
       <div className="about-content grid grid-cols-1 items-center gap-8 rounded-3xl p-6 sm:p-8 md:grid-cols-[minmax(220px,280px)_1fr] md:gap-10 lg:p-10">
         <motion.div
           className="profile-img mx-auto h-52 w-52 sm:h-56 sm:w-56 md:mx-0"

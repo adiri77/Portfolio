@@ -16,9 +16,9 @@ type ActionButtonBaseProps = {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "border-transparent bg-gradient-to-r from-aqua-dark to-aqua text-white shadow-[0_8px_24px_rgba(0,119,182,0.25)] hover:from-[#023e8a] hover:to-aqua-dark disabled:opacity-60",
+    "border-transparent bg-gradient-to-r from-[#f3d490] to-[#df9a3d] font-semibold text-[#2a1208] shadow-[0_10px_30px_rgba(223,154,61,0.35)] hover:from-[#f6e0ad] hover:to-[#e8b85b] hover:shadow-[0_16px_44px_rgba(232,184,91,0.48)] disabled:opacity-60",
   secondary:
-    "border-aqua/30 bg-cream text-aqua-dark shadow-[0_4px_16px_rgba(0,119,182,0.08)] hover:border-aqua hover:bg-cream-warm",
+    "border-aqua/40 bg-cream/50 text-aqua-light shadow-[0_4px_16px_rgba(0,0,0,0.3)] backdrop-blur-sm hover:border-aqua hover:bg-cream-warm/70 hover:text-aqua-dark",
   ghost:
     "border-transparent bg-transparent text-aqua-dark hover:bg-aqua/10",
   chip:

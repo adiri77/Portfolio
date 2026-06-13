@@ -23,7 +23,7 @@ const heroItem = (delay: number) => ({
 export default function Hero() {
   return (
     <section
-      className="hero relative flex w-full scroll-mt-24 items-center justify-center px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32 md:px-8 md:pb-24 lg:px-10 xl:px-12"
+      className="hero relative flex w-full scroll-mt-24 items-center justify-center pb-14 pt-28 sm:pb-16 sm:pt-32 md:pb-20"
       id="home"
     >
       <div className="hero-layout flex w-full flex-col items-center justify-center gap-7 text-center sm:gap-8 md:gap-10">
@@ -37,8 +37,17 @@ export default function Hero() {
           Interactive Portfolio Guide
         </motion.div>
 
+        <motion.p
+          className="hero-eyebrow"
+          initial="hidden"
+          animate="show"
+          variants={heroItem(0.21)}
+        >
+          Hi, my name is
+        </motion.p>
+
         <motion.h1
-          className="w-full bg-gradient-to-r from-aqua-dark via-aqua to-[#023e8a] bg-clip-text px-2 text-4xl font-extrabold leading-tight text-transparent sm:text-5xl lg:text-[3.2rem]"
+          className="w-full bg-gradient-to-r from-aqua-light via-aqua-dark to-[#e25822] bg-clip-text px-2 text-4xl font-extrabold leading-tight text-transparent sm:text-5xl lg:text-[3.2rem]"
           initial="hidden"
           animate="show"
           variants={heroItem(0.27)}
