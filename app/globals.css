@@ -1444,8 +1444,9 @@ filter: drop-shadow(0 6px 28px rgba(232, 184, 91, 0.28));
 font-family: var(--font-heading), Georgia, serif;
 font-weight: 700;
 font-size: clamp(2.9rem, 8vw, 5.25rem);
-line-height: 1.04;
+line-height: 1.18;
 letter-spacing: -0.015em;
+padding-bottom: 0.12em;
 margin-bottom: 0.75rem;
 }
 
