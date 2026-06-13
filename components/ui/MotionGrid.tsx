@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useReveal } from "@/components/layout/useReveal";
 
 type MotionGridProps = {
   children: React.ReactNode;
@@ -8,12 +9,13 @@ type MotionGridProps = {
 };
 
 export default function MotionGrid({ children, className = "" }: MotionGridProps) {
+  const [ref, shown] = useReveal<HTMLDivElement>();
   return (
     <motion.div
+      ref={ref}
       className={className}
       initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.12 }}
+      animate={shown ? "show" : "hidden"}
       variants={{
         hidden: {},
         show: { transition: { staggerChildren: 0.08 } },
