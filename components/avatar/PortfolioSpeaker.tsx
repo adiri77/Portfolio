@@ -28,9 +28,9 @@ export default function PortfolioSpeaker() {
       <div className="pointer-events-none absolute -bottom-20 -left-12 h-40 w-40 rounded-full bg-aqua-light/20 blur-3xl" />
 
       <div className="speaker-panel-inner relative flex flex-col items-center gap-5 text-center sm:gap-6 lg:flex-row lg:items-center lg:justify-center lg:gap-8">
-        <div className="flex w-full max-w-[13rem] shrink-0 flex-col items-center gap-3 lg:max-w-[15.5rem] lg:self-stretch">
+        <div className="flex w-full max-w-[13rem] shrink-0 flex-col items-center gap-3 lg:max-w-[15.5rem]">
           <motion.div
-            className={`speaker-portrait relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] shadow-[0_18px_50px_rgba(0,0,0,0.45)] ring-1 lg:aspect-auto lg:h-full lg:min-h-[22rem] ${
+            className={`speaker-portrait relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] shadow-[0_18px_50px_rgba(0,0,0,0.45)] ring-1 ${
               isSpeaking ? "ring-aqua/70 shadow-[0_0_44px_rgba(226,88,34,0.4)]" : "ring-aqua/30"
             }`}
             animate={isSpeaking ? { scale: [1, 1.015, 1] } : { scale: 1 }}
