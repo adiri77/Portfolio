@@ -135,7 +135,7 @@ export default function PortfolioSpeaker() {
             ))}
           </div>
 
-          <div className="speaker-transcript relative w-full min-h-[8rem] border-l-2 border-aqua/25 text-left sm:min-h-[9rem]">
+          <div className="speaker-transcript relative w-full min-h-[8rem] text-left sm:min-h-[9rem]">
             <div className="speaker-transcript-header flex items-center justify-between gap-3 border-b border-aqua/10">
               <span className="text-xs font-semibold uppercase tracking-wide text-aqua-dark">
                 {activeLabel}
